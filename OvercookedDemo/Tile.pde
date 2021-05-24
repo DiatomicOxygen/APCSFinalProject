@@ -23,7 +23,12 @@ public class Tile {
   }
   
   boolean putOn(Item a) {
-    
+    if (empty) {
+      i = a ;
+      empty = false ;
+      i.setXY((x2-x1)/2+x1,(y2-y1)/2+y1) ;
+      return true ;
+    }
     return false ;
   }
   
