@@ -28,7 +28,20 @@ public class Player {
   }
   
   void collide(ArrayList<Tile> tiles) {
-    
+    for (Tile t: tiles) {
+      float testX = x + cos(direction) * radius;
+      float testY = y + sin(direction) * radius;
+      boolean colliding = testX >= t.x1 && testX <= t.x2 && testY >= t.y1 && testY <= t.y2;
+      colliding = colliding || dist(x, y, t.x1, t.y1) <= radius;
+      colliding = colliding || dist(x, y, t.x1, t.y2) <= radius;
+      colliding = colliding || dist(x, y, t.x2, t.y1) <= radius;
+      colliding = colliding || dist(x, y, t.x2, t.y2) <= radius;
+      if (colliding) {
+        x -= cos(direction) * radius;
+        y -= sin(direction) * radius;
+      }
+    }
+
   }
   
   void pickUpDrop() {
