@@ -7,7 +7,7 @@ public class Item {
     this.x = x;
     this.y = y;
     this.c = c;
-    radius = width / 40;
+    radius = width / 45;
   }
   
   void display() {

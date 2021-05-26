@@ -1,4 +1,4 @@
-ArrayList<Tile> tiles = new ArrayList<Tile>();
+ArrayList<Tile> tiles;
 ArrayList<Item> items = new ArrayList<Item>();
 float WIDTH = 1080;
 float HEIGHT = 720;
@@ -7,13 +7,11 @@ Player P1 = new Player(500, 500, WIDTH);
 void setup() {
   frameRate(30);
   size(1080,720) ;
-  Tile a = new Tile(200,300,300,400,400) ;
-  tiles.add(a);
+  tiles = demo();
   Item b = new Item(50,100,100, WIDTH) ;
-  Item c = new Item(500,500,255, WIDTH) ;
+  Item c = new Item(400,500,255, WIDTH) ;
   items.add(b);
   items.add(c);
-  a.putOn(b) ;
 
 }
 
