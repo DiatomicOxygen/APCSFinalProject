@@ -10,7 +10,7 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles) {
   tiles.add(b) ;
   tiles.add(c) ;
   tiles.add(d) ;
-  Item cabbage = new Item(0,0,color(#2BD668)) ;
+  Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cabbage") ;
   //tile generation
  
   for(int i=1; i<=13; i++) {

@@ -1,7 +1,7 @@
 public class Crate extends ProcessingTile {
-  Item type ;
+  Ingredient type ;
   
-  Crate(Item type, color c, float x1,float y1,float x2,float y2) {
+  Crate(Ingredient type, color c, float x1,float y1,float x2,float y2) {
     super(c,x1,y1,x2,y2) ;
     this.type = type ;
     empty = true ;
@@ -34,5 +34,5 @@ public class Crate extends ProcessingTile {
       empty = false;
     }
   }
-  
+ 
 }
