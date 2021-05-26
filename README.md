@@ -20,3 +20,8 @@ Edward:
 - Added display and constructor for both
 - Added planned instance variables to both
 - Added collide method for player
+
+5/25/21
+Edward:
+- created pickUpDrop method for Player
+- edited a few other methods to meet requirements of pickUpDrop and future player methods
