@@ -44,4 +44,7 @@ void keyPressed() {
   if (key == 'e') {
     P1.pickUpDrop(tiles, items);
   }
+  if (key == 'q') {
+    P1.interact(pTiles, items); 
+  }
 }

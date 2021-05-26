@@ -15,8 +15,10 @@ public class Crate extends ProcessingTile {
     stroke(0);
     fill(c) ;
     rect(x1,y1,x2-x1,y2-y1) ;
-    fill(type.getColor());
+    fill(255);
     ellipse((x2+x1)/2, (y2+y1)/2, width / 20, width / 20);
+    fill(type.getColor());
+    ellipse((x2+x1)/2, (y2+y1)/2, width / 30, width / 30);
   }
   
    boolean putOn(Item a) {
@@ -27,7 +29,7 @@ public class Crate extends ProcessingTile {
   
   void process(ArrayList<Item> items) {
     if (empty) {
-      this.i = new Item(0,0,type.getColor());
+      this.i = new Item((x2+x1)/2,(y2+y1)/2,type.getColor());
       items.add(i);
       empty = false;
     }

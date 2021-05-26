@@ -77,8 +77,12 @@ public class Player {
     return false;
   }
   
-  void interact() {
-   //to be implemented 
+  void interact(ArrayList<ProcessingTile> pTiles, ArrayList<Item> items) {
+   for (ProcessingTile pT : pTiles) {
+     if(dist((pT.x1 + pT.x2)/2, (pT.y1 + pT.y2)/2, x, y) <= radius * 3) {
+        pT.process(items); 
+     }
+   }
   }
   
 }

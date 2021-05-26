@@ -4,6 +4,7 @@ public class ProcessingTile extends Tile {
      super(c, x1, x2, y1, y2); 
   }
 
-  void process() {}}
+  void process(ArrayList<Item> items) {}
+}
   
   
