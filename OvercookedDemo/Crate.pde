@@ -1,4 +1,4 @@
-public class Crate extends Tile {
+public class Crate extends ProcessingTile {
   Item type ;
   
   Crate(Item type, color c, float x1,float y1,float x2,float y2) {
@@ -23,9 +23,14 @@ public class Crate extends Tile {
     return false ;
   }
   
-  Item retrieve() {
-    Item a = new Item(0,0,type.getColor()) ;
-    return a ;
+  //uses super.retrieve();
+  
+  void process(ArrayList<Item> items) {
+    if (empty) {
+      this.i = new Item(0,0,type.getColor());
+      items.add(i);
+      empty = false;
+    }
   }
   
 }
