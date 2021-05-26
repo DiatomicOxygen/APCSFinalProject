@@ -8,7 +8,7 @@ public class Player {
   Player(float x, float y, float width) {
     this.x = x;
     this.y = y;
-    radius = width / 30;
+    radius = width / 40;
   }
   
   void display() {

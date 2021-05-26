@@ -1,13 +1,12 @@
 public class Item {
   float x, y;
   color c;
-  float radius;
+  float radius = WIDTH / 40;
   
-  Item(float x, float y, color c, float width) {
+  Item(float x, float y, color c) {
     this.x = x;
     this.y = y;
     this.c = c;
-    radius = width / 40;
   }
   
   void display() {
@@ -20,4 +19,10 @@ public class Item {
     this.x = x ;
     this.y = y ;
   }
+  
+  color getColor() {
+    return c ;
+  }
+  
+  
 }

@@ -3,27 +3,20 @@ ArrayList<Item> items = new ArrayList<Item>();
 float WIDTH = 1080;
 float HEIGHT = 720;
 Player P1 = new Player(500, 500, WIDTH);
-  
+
 void setup() {
   frameRate(30);
   size(1080,720) ;
-  Tile a = new Tile(200,300,300,400,400) ;
-  tiles.add(a);
-  Item b = new Item(50,100,100, WIDTH) ;
-  Item c = new Item(500,500,255, WIDTH) ;
-  items.add(b);
-  items.add(c);
-  a.putOn(b) ;
-
+  tiles = demo() ;
 }
 
 void draw() {
-  background(200) ;
+  background(230) ;
   fill(0);
   textSize(20);
-  text("FPS: "+frameRate,20,20) ;
-  for (Tile t : tiles) {
-    t.display(); 
+  text("FPS: "+frameRate,5,20) ;
+  for(Tile t : tiles) {
+    t.display() ;
   }
   for (Item i : items) {
     i.display(); 

@@ -18,6 +18,7 @@ public class Tile {
   
   void display() {
     stroke(0) ;
+    fill(c) ;
     rect(x1,y1,x2-x1,y2-y1) ;
   }
   

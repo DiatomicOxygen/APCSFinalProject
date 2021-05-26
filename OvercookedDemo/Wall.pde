@@ -6,7 +6,7 @@ public class Wall extends Tile {
   }
   
   void display() {
-    stroke(0) ;
+    noStroke() ;
     fill(c) ;
     rect(x1,y1,x2-x1,y2-y1) ;
   }
