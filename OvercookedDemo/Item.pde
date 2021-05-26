@@ -2,7 +2,6 @@ public class Item {
   float x, y;
   color c;
   float radius;
-  boolean onTile;
   
   Item(float x, float y, color c, float width) {
     this.x = x;
@@ -20,9 +19,5 @@ public class Item {
   void setXY(float x, float y) {
     this.x = x ;
     this.y = y ;
-  }
-  
-  void toggleOnTile() {
-    onTile = ! onTile;
   }
 }
