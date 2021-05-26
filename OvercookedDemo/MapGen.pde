@@ -24,9 +24,9 @@ ArrayList<Tile> demo() {
     color tan = color(#D3BC91) ;
     returnList.add(new Tile(tan,117.5,215+(65*(i-1)),182.5,215+(65*i))) ;
     if ((i != 6) && (i != 5)) returnList.add(new Tile(tan,507.5,215+(65*(i-1)),572.5,215+(65*i))) ;
+    if (i != 6) returnList.add(new Tile(tan,507.5,215+(65*(i-1)),572.5,215+(65*i))) ;
     returnList.add(new Tile(tan,897.5,215+(65*(i-1)),962.5,215+(65*i))) ;
   }
   return returnList ;
   
 }
-   

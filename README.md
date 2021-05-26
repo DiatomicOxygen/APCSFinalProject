@@ -14,3 +14,14 @@ Jesse:
 - Initialized Tile class, variables in Tile class, and added the constructor along with the display and putOn method
 - Extended Tile class into Wall class, made minor edits to main and item class
 - Began working map for first level
+
+Edward:
+- Initialized Player and Item class
+- Added display and constructor for both
+- Added planned instance variables to both
+- Added collide method for player
+
+5/25/21
+Edward:
+- created pickUpDrop method for Player
+- edited a few other methods to meet requirements of pickUpDrop and future player methods

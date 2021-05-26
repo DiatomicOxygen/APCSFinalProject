@@ -1,4 +1,4 @@
-ArrayList<Tile> tiles = new ArrayList<Tile>();
+ArrayList<Tile> tiles;
 ArrayList<Item> items = new ArrayList<Item>();
 float WIDTH = 1080;
 float HEIGHT = 720;
@@ -8,6 +8,7 @@ void setup() {
   frameRate(30);
   size(1080,720) ;
   tiles = demo() ;
+
 }
 
 void draw() {
