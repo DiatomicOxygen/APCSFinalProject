@@ -1,12 +1,18 @@
 ArrayList<Tile> tiles = new ArrayList<Tile>();
-Item b = new Item(50,100,100) ;
-Player P1 = new Player(500, 500);
+ArrayList<Item> items = new ArrayList<Item>();
+float WIDTH = 1080;
+float HEIGHT = 720;
+Player P1 = new Player(500, 500, WIDTH);
   
 void setup() {
   frameRate(30);
   size(1080,720) ;
-  Tile a = new Tile(200,300,300,450,450) ;
+  Tile a = new Tile(200,300,300,400,400) ;
   tiles.add(a);
+  Item b = new Item(50,100,100, WIDTH) ;
+  Item c = new Item(500,500,255, WIDTH) ;
+  items.add(b);
+  items.add(c);
   a.putOn(b) ;
 
 }
@@ -18,6 +24,9 @@ void draw() {
   text("FPS: "+frameRate,20,20) ;
   for (Tile t : tiles) {
     t.display(); 
+  }
+  for (Item i : items) {
+    i.display(); 
   }
   P1.display();
   P1.collide(tiles);
@@ -37,5 +46,7 @@ void keyPressed() {
   if (key == 'd') {
     P1.move(10, 0, 0);
   }
-
+  if (key == 'e') {
+    P1.pickUpDrop(tiles, items);
+  }
 }

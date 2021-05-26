@@ -19,7 +19,6 @@ public class Tile {
   void display() {
     stroke(0) ;
     rect(x1,y1,x2-x1,y2-y1) ;
-    if (!(empty)) i.display() ;
   }
   
   boolean putOn(Item a) {
