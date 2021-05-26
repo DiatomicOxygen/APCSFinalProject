@@ -1,13 +1,14 @@
 public class Player {
   float x, y;
-  float radius = 1080 / 30;
+  float radius;
   Item inHand;
   float direction = 0;
   boolean colliding;
   
-  Player(float x, float y) {
+  Player(float x, float y, float width) {
     this.x = x;
     this.y = y;
+    radius = width / 30;
   }
   
   void display() {
@@ -17,7 +18,6 @@ public class Player {
     line(x,y,x + cos(direction) * radius, y + sin(direction) * radius);
     if (inHand != null) {
        inHand.setXY(x + cos(direction) * radius, y + sin(direction) * radius); 
-       inHand.display();
     }
   }
   
@@ -37,17 +37,48 @@ public class Player {
       colliding = colliding || dist(x, y, t.x2, t.y1) <= radius;
       colliding = colliding || dist(x, y, t.x2, t.y2) <= radius;
       if (colliding) {
-        x -= cos(direction) * radius;
-        y -= sin(direction) * radius;
+        x -= cos(direction) * radius * .5;
+        y -= sin(direction) * radius * .5;
       }
     }
 
   }
   
-  void pickUpDrop() {
+  boolean pickUpDrop(ArrayList<Tile> tiles, ArrayList<Item> items) {
     if(inHand != null) {
-       
+      //Drop part of the method
+       for (Tile t : tiles) {
+          if(dist((t.x1 + t.x2)/2, (t.y1 + t.y2)/2, x, y) <= radius * 3) {
+            if (! t.putOn(inHand)) {
+              return false;
+            }
+            inHand = null;
+            return true;
+          }
+       }
+       inHand.setXY(inHand.x, inHand.y);
+       inHand = null;
+       return true; 
+    } else {
+      //Pick Up part of the method
+      for (Tile t : tiles) {
+          if(dist((t.x1 + t.x2)/2, (t.y1 + t.y2)/2, x, y) <= radius * 3) {
+            inHand = t.retrieve();
+            return true;
+          }
+       }
+       for (Item i : items) {
+          if(dist(i.x, i.y, x, y) <= radius * 1.5) {
+            inHand = i;
+            return true;
+          } 
+       }
     }
+    return false;
+  }
+  
+  void interact() {
+   //to be implemented 
   }
   
 }
