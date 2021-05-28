@@ -46,3 +46,8 @@ Jesse:
 - Fixed bugs with player "teleporting" back during collision
 - Fixed interactions with tiles and items
 
+5/28/21
+Edward:
+- fixed some bugs with pickUpDrop
+- Added garbage can
+- made UI better
