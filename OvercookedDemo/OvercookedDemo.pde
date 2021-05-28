@@ -1,5 +1,6 @@
 ArrayList<Tile> tiles = new ArrayList<Tile>();
 ArrayList<Item> items = new ArrayList<Item>();
+ArrayList<Container> containers = new ArrayList<Container>();
 ArrayList<ProcessingTile> pTiles = new ArrayList<ProcessingTile>();
 float WIDTH = 1080;
 float HEIGHT = 720;
@@ -8,8 +9,8 @@ Player P1 = new Player(400, 400, WIDTH);
 void setup() {
   frameRate(30);
   size(1080,720) ;
-  demo(tiles, pTiles) ;
-
+  demo(tiles, pTiles,containers) ;
+  
 }
 
 void draw() {
@@ -53,7 +54,7 @@ void keyPressed() {
     P1.collide(tiles);
   }
   if (key == 'e') {
-    P1.pickUpDrop(tiles, items);
+    P1.pickUpDrop(tiles, items, containers);
   }
   if (key == 'q') {
     P1.interact(pTiles, items); 
