@@ -4,13 +4,22 @@ ArrayList<Container> containers = new ArrayList<Container>();
 ArrayList<ProcessingTile> pTiles = new ArrayList<ProcessingTile>();
 float WIDTH = 1080;
 float HEIGHT = 720;
+int minutes = 0 ;
+int seconds = 0 ;
+int timer = 300 ;
 Player P1 = new Player(400, 400, WIDTH);
 
 void setup() {
   frameRate(30);
   size(1080,720) ;
   demo(tiles, pTiles,containers) ;
+  minutes = minute() ;
+  seconds = second() ;
   
+}
+
+void timeTick() {
+
 }
 
 void draw() {
@@ -18,6 +27,11 @@ void draw() {
   fill(0);
   textSize(20);
   text("FPS: "+frameRate,5,20) ;
+  int timeElapsed = (minute() - minutes) * 60 + (second() - seconds) ;
+  if (timer - timeElapsed < 0) timeElapsed = timer ;
+  textSize(40);
+  if (timer - timeElapsed <= 10) fill(color(#F54343)) ;
+  text(timer - timeElapsed,950,65) ;
   for(Tile t : tiles) {
     t.display() ;
   }
@@ -25,7 +39,6 @@ void draw() {
     i.display(); 
   }
   P1.display();
-
 }
 
 void keyPressed() {
