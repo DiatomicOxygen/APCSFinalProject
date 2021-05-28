@@ -22,6 +22,10 @@ Edward:
 - Added collide method for player
 
 5/25/21
+Jesse:
+- Initialized crate class with variables and methods
+- Edited map
+
 Edward:
 - created pickUpDrop method for Player
 - edited a few other methods to meet requirements of pickUpDrop and future player methods
@@ -37,3 +41,8 @@ Edward:
 - DishDispenser class added to create plates
   - could not use crate class to do so due to complications with inheritance (container could not use putOn() if it was assigned as an Item)
 - Player pickUpDrop updated to be able to put ingredients onto plates
+
+Jesse:
+- Fixed bugs with player "teleporting" back during collision
+- Fixed interactions with tiles and items
+
