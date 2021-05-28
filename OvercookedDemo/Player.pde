@@ -50,7 +50,7 @@ public class Player {
     if(inHand != null) {
       //Drop part of the method
       for (Container c : containers) {
-         if (c != inHand && dist(x,y,c.x,c.y) <= radius * 3) {
+         if (c != inHand && dist(xInFront,yInFront,c.x,c.y) <= radius) {
            if (! c.putOn(inHand)) {
              return false;
             }

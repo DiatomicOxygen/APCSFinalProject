@@ -33,9 +33,11 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
   }
   for(int i=1; i<=6; i++) {
     color tan = color(#D3BC91) ;
-    tiles.add(new Tile(tan,117.5,215+(65*(i-1)),182.5,215+(65*i))) ;
-    if ((i != 6) && (i != 5)) tiles.add(new Tile(tan,507.5,215+(65*(i-1)),572.5,215+(65*i))) ;
-    if (i != 6) tiles.add(new Tile(tan,507.5,215+(65*(i-1)),572.5,215+(65*i))) ;
-    tiles.add(new Tile(tan,897.5,215+(65*(i-1)),962.5,215+(65*i))) ;
+    float y1 = 215+(65*(i-1));
+    float y2 = 215+(65*i);
+    tiles.add(new Tile(tan,117.5,y1,182.5,y2)) ;
+    if ((i != 6) && (i != 5)) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;
+    if (i != 6) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;
+    tiles.add(new Tile(tan,897.5,y1,962.5,y2)) ;
   }
 }

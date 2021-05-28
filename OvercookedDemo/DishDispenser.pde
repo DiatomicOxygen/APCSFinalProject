@@ -34,7 +34,7 @@ public class DishDispenser extends Tile {
     if (limit > 0) {
       temp = new Container((x2+x1)/2,(y2+y1)/2,255,"plate");
       containers.add(temp);
-      items.add(temp);
+      items.add(0,temp);
       limit--;
       return temp;
     }
