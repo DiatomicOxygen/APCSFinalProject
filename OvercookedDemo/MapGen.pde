@@ -1,4 +1,4 @@
-void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles) {
+void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Container> containers) {
   //wall generation
   Tile a = new Wall(70,0,100,1080,150) ;
   Tile b = new Wall(70,0,670,1080,720) ;
@@ -10,24 +10,26 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles) {
   tiles.add(b) ;
   tiles.add(c) ;
   tiles.add(d) ;
-  Item cabbage = new Ingredient(0,0,color(#2BD668), "cabbage") ;
-  Item plate = new Ingredient(0,0,255, "plate");
+  Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cabbage") ;
   //tile generation
  
   for(int i=1; i<=13; i++) {
     color tan = color(#D3BC91) ;
-    if (i != 9 && i != 10) tiles.add(new Tile(tan,117.5+(65*(i-1)),150,117.5+(65*i),215)) ;
+    float x1 = 117.5+(65*(i-1));
+    float y1 = 150;
+    float x2 = 117.5+(65*i);
+    float y2 = 215;
+    if (i != 9 && i != 10) tiles.add(new Tile(tan,x1,y1,x2,y2)) ;
     if (i == 9) {
-      ProcessingTile crate = new Crate(cabbage,color(#746B49),117.5+(65*(i-1)),150,117.5+(65*i),215);
+      ProcessingTile crate = new Crate(cabbage,color(#746B49),x1,y1,x2,y2);
       pTiles.add(crate);
       tiles.add(crate);
     }
     if (i == 10) {
-      ProcessingTile crate = new Crate(plate,color(#746B49),117.5+(65*(i-1)),150,117.5+(65*i),215);
-      pTiles.add(crate);
-      tiles.add(crate);
+      Tile dishes = new DishDispenser(125,x1,y1,x2,y2, containers, items);
+      tiles.add(dishes);
     }
-    tiles.add(new Tile(tan,117.5+(65*(i-1)),605,117.5+(65*i),670)) ;
+    tiles.add(new Tile(tan,x1,605,x2,670)) ;
   }
   for(int i=1; i<=6; i++) {
     color tan = color(#D3BC91) ;

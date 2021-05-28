@@ -1,5 +1,6 @@
 ArrayList<Tile> tiles = new ArrayList<Tile>();
 ArrayList<Item> items = new ArrayList<Item>();
+ArrayList<Container> containers = new ArrayList<Container>();
 ArrayList<ProcessingTile> pTiles = new ArrayList<ProcessingTile>();
 float WIDTH = 1080;
 float HEIGHT = 720;
@@ -8,7 +9,7 @@ Player P1 = new Player(500, 500, WIDTH);
 void setup() {
   frameRate(30);
   size(1080,720) ;
-  demo(tiles, pTiles) ;
+  demo(tiles, pTiles,containers) ;
 
 }
 
