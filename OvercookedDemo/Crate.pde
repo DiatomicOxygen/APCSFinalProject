@@ -29,7 +29,7 @@ public class Crate extends ProcessingTile {
   
   void process(ArrayList<Item> items) {
     if (empty) {
-      this.i = new Item((x2+x1)/2,(y2+y1)/2,type.getColor());
+      this.i = new Ingredient((x2+x1)/2,(y2+y1)/2,type.getColor(),type.name);
       items.add(i);
       empty = false;
     }

@@ -44,9 +44,18 @@ public class Player {
 
   }
   
-  boolean pickUpDrop(ArrayList<Tile> tiles, ArrayList<Item> items) {
+  boolean pickUpDrop(ArrayList<Tile> tiles, ArrayList<Item> items, ArrayList<Container> containers) {
     if(inHand != null) {
       //Drop part of the method
+       for (Container c : containers) {
+         if (c != inHand && dist(x,y,c.x,c.y) <= radius * 3) {
+           if (! c.putOn(inHand)) {
+             return false;
+            }
+            inHand = null;
+            return true;
+         }
+       }
        for (Tile t : tiles) {
           if(dist((t.x1 + t.x2)/2, (t.y1 + t.y2)/2, x, y) <= radius * 3) {
             if (! t.putOn(inHand)) {

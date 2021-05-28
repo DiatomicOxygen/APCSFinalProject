@@ -1,6 +1,5 @@
 public class Ingredient extends Item {
  
-  String name; 
   //PImage img TO BE IMPLEMENTED
   boolean isCuttable, isCookable;
   

@@ -10,7 +10,7 @@ void setup() {
   frameRate(30);
   size(1080,720) ;
   demo(tiles, pTiles,containers) ;
-
+  
 }
 
 void draw() {
@@ -43,7 +43,7 @@ void keyPressed() {
     P1.move(10, 0, 0);
   }
   if (key == 'e') {
-    P1.pickUpDrop(tiles, items);
+    P1.pickUpDrop(tiles, items, containers);
   }
   if (key == 'q') {
     P1.interact(pTiles, items); 
