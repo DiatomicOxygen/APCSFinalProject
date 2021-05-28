@@ -19,7 +19,7 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     float y1 = 150;
     float x2 = 117.5+(65*i);
     float y2 = 215;
-    if (i != 9 && i != 10) tiles.add(new Tile(tan,x1,y1,x2,y2)) ;
+    if (i != 9 && i != 10 && i != 12) tiles.add(new Tile(tan,x1,y1,x2,y2)) ;
     if (i == 9) {
       ProcessingTile crate = new Crate(cabbage,color(#746B49),x1,y1,x2,y2);
       pTiles.add(crate);
@@ -28,6 +28,10 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     if (i == 10) {
       Tile dishes = new DishDispenser(125,x1,y1,x2,y2, containers, items);
       tiles.add(dishes);
+    }
+    if (i == 12) {
+      Tile garbage = new Garbage(125,x1,y1,x2,y2, containers, items);
+      tiles.add(garbage);
     }
     tiles.add(new Tile(tan,x1,605,x2,670)) ;
   }
