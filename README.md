@@ -25,3 +25,9 @@ Edward:
 Edward:
 - created pickUpDrop method for Player
 - edited a few other methods to meet requirements of pickUpDrop and future player methods
+
+5/26/21
+Edward:
+- edited Crate class to extend ProcessingTiles class (for future convenience)
+- made player interact method (for all ProcessingTiles)
+- created ingredient and container classes
