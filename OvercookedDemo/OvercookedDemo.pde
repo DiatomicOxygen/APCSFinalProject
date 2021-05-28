@@ -2,33 +2,49 @@ ArrayList<Tile> tiles = new ArrayList<Tile>();
 ArrayList<Item> items = new ArrayList<Item>();
 ArrayList<Container> containers = new ArrayList<Container>();
 ArrayList<ProcessingTile> pTiles = new ArrayList<ProcessingTile>();
+ArrayList<Order> orders = new ArrayList<Order>();
 float WIDTH = 1080;
 float HEIGHT = 720;
+int hours = 0 ;
 int minutes = 0 ;
 int seconds = 0 ;
 int timer = 300 ;
 Player P1 = new Player(400, 400, WIDTH);
+boolean orderAdded = false ;
 
 void setup() {
   frameRate(30);
   size(1080,720) ;
   demo(tiles, pTiles,containers) ;
+  hours = hour() ;
   minutes = minute() ;
   seconds = second() ;
   
 }
 
-void timeTick() {
-
-}
-
 void draw() {
-  background(230) ;
-  fill(0);
-  textSize(20);
-  text("FPS: "+frameRate,5,20) ;
-  int timeElapsed = (minute() - minutes) * 60 + (second() - seconds) ;
+  background(230) ; 
+  int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
   if (timer - timeElapsed < 0) timeElapsed = timer ;
+  if (!(orderAdded) && ((timeElapsed % 10) == 0) && (timeElapsed != timer - 15)) {
+    Order newOrder = new Order(0,0,255, "plate",timeElapsed,timeElapsed+30) ;
+    newOrder.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
+    orders.add(newOrder) ;
+    orderAdded = true ;
+  }
+  if ((timeElapsed % 10) == 3) orderAdded = false ;
+  float x = 0 ;
+  Order removed = new Order(0,0,255, "plate",0,0) ;
+  for(Order o : orders) {
+    o.curTime = timeElapsed ; 
+    o.display(x*100, 0) ;
+    if (o.curTime >= o.endTime) {
+      removed = o ;
+    }
+    x++ ;
+  }
+  orders.remove(removed) ;
+  fill(0);
   textSize(40);
   if (timer - timeElapsed <= 10) fill(color(#F54343)) ;
   text(timer - timeElapsed,950,65) ;
@@ -39,6 +55,8 @@ void draw() {
     i.display(); 
   }
   P1.display();
+  textSize(15);
+  text("FPS: "+frameRate,5,20) ;
 }
 
 void keyPressed() {
