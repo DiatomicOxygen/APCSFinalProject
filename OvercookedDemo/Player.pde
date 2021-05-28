@@ -21,13 +21,13 @@ public class Player {
     }
   }
   
-  void move (float dx, float dy, float d) {
+  void move (float dx, float dy, float d, ArrayList<Tile> tiles) {
    x += dx;
-   y += dy;
+   y += dy;   
    direction = d;
   }
-  
-  void collide(ArrayList<Tile> tiles) {
+ 
+   void collide(ArrayList<Tile> tiles) {
     for (Tile t: tiles) {
       float testX = x + cos(direction) * radius;
       float testY = y + sin(direction) * radius;
@@ -37,18 +37,20 @@ public class Player {
       colliding = colliding || dist(x, y, t.x2, t.y1) <= radius;
       colliding = colliding || dist(x, y, t.x2, t.y2) <= radius;
       if (colliding) {
-        x -= cos(direction) * radius * .5;
-        y -= sin(direction) * radius * .5;
+        x -= cos(direction) * 5;
+        y -= sin(direction) * 5;
       }
     }
 
   }
   
   boolean pickUpDrop(ArrayList<Tile> tiles, ArrayList<Item> items) {
+    float xInFront = x + cos(direction)*55 ;
+    float yInFront = y + sin(direction)*55 ;
     if(inHand != null) {
       //Drop part of the method
        for (Tile t : tiles) {
-          if(dist((t.x1 + t.x2)/2, (t.y1 + t.y2)/2, x, y) <= radius * 3) {
+          if ((t.x1 < xInFront) && (t.x2 > xInFront) && (t.y1 < yInFront) && (t.y2 > yInFront)) {
             if (! t.putOn(inHand)) {
               return false;
             }
@@ -62,7 +64,7 @@ public class Player {
     } else {
       //Pick Up part of the method
       for (Tile t : tiles) {
-          if(dist((t.x1 + t.x2)/2, (t.y1 + t.y2)/2, x, y) <= radius * 3) {
+          if ((t.x1 < xInFront) && (t.x2 > xInFront) && (t.y1 < yInFront) && (t.y2 > yInFront)) {
             inHand = t.retrieve();
             return true;
           }
@@ -79,7 +81,9 @@ public class Player {
   
   void interact(ArrayList<ProcessingTile> pTiles, ArrayList<Item> items) {
    for (ProcessingTile pT : pTiles) {
-     if(dist((pT.x1 + pT.x2)/2, (pT.y1 + pT.y2)/2, x, y) <= radius * 3) {
+     float xInFront = x + cos(direction)*55 ;
+     float yInFront = y + sin(direction)*55 ;
+     if ((pT.x1 < xInFront) && (pT.x2 > xInFront) && (pT.y1 < yInFront) && (pT.y2 > yInFront)) {
         pT.process(items); 
      }
    }
