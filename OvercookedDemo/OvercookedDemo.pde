@@ -26,13 +26,15 @@ void draw() {
   background(230) ; 
   int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
   if (timer - timeElapsed < 0) timeElapsed = timer ;
-  if (!(orderAdded) && ((timeElapsed % 10) == 0) && (timeElapsed != timer - 15)) {
+  if (!(orderAdded) && ((timeElapsed % 15) == 0) && (timeElapsed != timer - 15)) {
     Order newOrder = new Order(0,0,timeElapsed,timeElapsed+30,score) ;
-    newOrder.container.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
+    Ingredient newIngredient = new Ingredient(0,0,color(#2BD668), "cabbage",true, false) ;
+    newIngredient.isCut = true ;
+    newOrder.container.putOn(newIngredient) ;
     orders.add(newOrder) ;
     orderAdded = true ;
   }
-  if ((timeElapsed % 10) == 3) orderAdded = false ;
+  if ((timeElapsed % 15) == 3) orderAdded = false ;
   float x = 0 ;
   Order removed = new Order(0,0,0,0,score) ;
   for(Order o : orders) {

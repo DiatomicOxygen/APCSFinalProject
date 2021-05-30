@@ -10,7 +10,7 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
   tiles.add(b) ;
   tiles.add(c) ;
   tiles.add(d) ;
-  Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cabbage") ;
+  Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cabbage",true,false) ;
   //tile generation
  
   for(int i=1; i<=13; i++) {
@@ -19,7 +19,12 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     float y1 = 150;
     float x2 = 117.5+(65*i);
     float y2 = 215;
-    if (i != 9 && i != 10 && i != 12) tiles.add(new Tile(tan,x1,y1,x2,y2)) ;
+    if (i != 4 && i != 9 && i != 10 && i != 12) tiles.add(new Tile(tan,x1,y1,x2,y2)) ;
+    if (i == 4) {
+      ProcessingTile cuttingBoard = new CuttingBoard(color(#746B49),x1,y1,x2,y2);
+      pTiles.add(cuttingBoard);
+      tiles.add(cuttingBoard);
+    }
     if (i == 9) {
       ProcessingTile crate = new Crate(cabbage,color(#746B49),x1,y1,x2,y2);
       pTiles.add(crate);
