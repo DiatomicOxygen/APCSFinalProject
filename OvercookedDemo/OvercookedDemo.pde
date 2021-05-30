@@ -28,14 +28,16 @@ void draw() {
   int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
   if (timer - timeElapsed < 0) timeElapsed = timer ;
   if (!(orderAdded) && ((timeElapsed % 10) == 0) && (timeElapsed != timer - 15)) {
-    Order newOrder = new Order(0,0,255, "plate",timeElapsed,timeElapsed+30,score) ;
-    newOrder.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
+    Order newOrder = new Order(0,0,timeElapsed,timeElapsed+30,score) ;
+    newOrder.container.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
+    newOrder.container.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
+    newOrder.container.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
     orders.add(newOrder) ;
     orderAdded = true ;
   }
   if ((timeElapsed % 10) == 3) orderAdded = false ;
   float x = 0 ;
-  Order removed = new Order(0,0,255, "plate",0,0,score) ;
+  Order removed = new Order(0,0,0,0,score) ;
   for(Order o : orders) {
     o.curTime = timeElapsed ; 
     o.display(20 + x*108, 10) ;

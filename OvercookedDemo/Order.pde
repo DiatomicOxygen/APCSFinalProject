@@ -1,12 +1,11 @@
-public class Order extends Container {
+public class Order {
   int curTime ;
   int endTime ;
+  Container container;
   Integer score;
   
-  Order(float x, float y, color c, String name, int curTime, int endTime, Integer score) {
-    super(x,y,c,"plate");
-    this.name = name;
-    ingredients = new ArrayList<Item>();
+  Order(float x, float y, int curTime, int endTime, Integer score) {
+    container = new Container(x,y,255,"plate");
     this.curTime = curTime ;
     this.endTime = endTime ;
     this.score = score;
@@ -21,7 +20,14 @@ public class Order extends Container {
     fill(c) ;
     rect(x,y,108 - 108 * (1 - (float)(endTime - curTime)/30),20) ;
     colorMode(RGB,255,255,255) ;
-  }
+    stroke(0);
+    container.setXY(x+54,y+46);
+    container.display();
+    for (Item i : container.ingredients) {
+      i.display();  
+    }
+    
+}
 
   void reward() {
     score += (endTime - curTime);  
