@@ -1,13 +1,15 @@
 public class Order extends Container {
   int curTime ;
   int endTime ;
+  Integer score;
   
-  Order(float x, float y, color c, String name, int curTime, int endTime) {
+  Order(float x, float y, color c, String name, int curTime, int endTime, Integer score) {
     super(x,y,c,"plate");
     this.name = name;
     ingredients = new ArrayList<Item>();
     this.curTime = curTime ;
     this.endTime = endTime ;
+    this.score = score;
   }
   
   void display(float x, float y) {
@@ -21,5 +23,8 @@ public class Order extends Container {
     colorMode(RGB,255,255,255) ;
   }
 
+  void reward() {
+    score += (endTime - curTime);  
+  }
   
 }
