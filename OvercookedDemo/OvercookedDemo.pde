@@ -12,6 +12,12 @@ int timer = 300 ;
 int[] score = new int[1]; 
 Player P1 = new Player(400, 400, WIDTH);
 boolean orderAdded = false ;
+boolean wPressed = false; 
+boolean aPressed = false; 
+boolean sPressed = false; 
+boolean dPressed = false; 
+boolean qPressed = false; 
+boolean ePressed = false; 
 
 void setup() {
   frameRate(30);
@@ -70,33 +76,108 @@ void draw() {
 
 void keyPressed() {
   if (key == 'w') {
-    P1.move(0, -5, 3 * (float)Math.PI / 2, tiles);
-    P1.collide(tiles);
-    P1.move(0, -5, 3 * (float)Math.PI / 2, tiles);
-    P1.collide(tiles);
+    wPressed = true ;
   }
-  if (key == 'a') {
+  else if (key == 'a') {
+    aPressed = true ;
+  }
+  else if (key == 's') {
+    sPressed = true ;
+  }
+  else if (key == 'd') {
+    dPressed = true ;
+  }
+  else if (key == 'q') {
+    qPressed = true ;
+  }
+  else if (key == 'e') {
+    ePressed = true ;
+  }
+  move() ;
+}
+
+void keyReleased() {
+  if (key == 'w') {
+    wPressed = false ;
+  }
+  else if (key == 'a') {
+    aPressed = false ;
+  }
+  else if (key == 's') {
+    sPressed = false ;
+  }
+  else if (key == 'd') {
+    dPressed = false ;
+  }
+  else if (key == 'q') {
+    qPressed = false ;
+  }
+  else if (key == 'e') {
+    ePressed = false ;
+  }
+}
+
+void move() {
+  //w
+  if (wPressed && ! sPressed) {
+    if (aPressed && !dPressed) {
+      P1.move(-3.5355, -3.5355, 5 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+      P1.move(-3.5355, -3.5355, 5 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+    } 
+    else if (dPressed && !aPressed) {
+      P1.move(3.5355, -3.5355, 7 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+      P1.move(3.5355, -3.5355, 7 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+    } 
+    else {
+      P1.move(0, -5, 3 * (float)Math.PI / 2, tiles);
+      P1.collide(tiles);
+      P1.move(0, -5, 3 * (float)Math.PI / 2, tiles);
+      P1.collide(tiles);
+    }
+  }
+  //s
+  else if (sPressed && ! wPressed) {
+    if (aPressed && !dPressed) {
+      P1.move(-3.5355, 3.5355, 3 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+      P1.move(-3.5355, 3.5355, 3 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+    } 
+    else if (dPressed && !aPressed) {
+      P1.move(3.5355, 3.5355, 1 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+      P1.move(3.5355, 3.5355, 1 * (float)Math.PI / 4, tiles);
+      P1.collide(tiles);
+    } 
+    else {
+      P1.move(0, 5, (float)Math.PI / 2, tiles);
+      P1.collide(tiles);
+      P1.move(0, 5, (float)Math.PI / 2, tiles);
+      P1.collide(tiles);
+    }
+  }
+  //a
+  else if (aPressed && ! dPressed) {
     P1.move(-5, 0, (float)Math.PI, tiles);
     P1.collide(tiles);
     P1.move(-5, 0, (float)Math.PI, tiles);
     P1.collide(tiles);
   }
-  if (key == 's') {
-    P1.move(0, 5, (float)Math.PI / 2, tiles);
-    P1.collide(tiles);
-    P1.move(0, 5, (float)Math.PI / 2, tiles);
-    P1.collide(tiles);
-  }
-  if (key == 'd') {
+  //d
+  else if (dPressed && ! aPressed) {
     P1.move(5, 0, 0, tiles);
     P1.collide(tiles);
     P1.move(5, 0, 0, tiles);
     P1.collide(tiles);
   }
-  if (key == 'e') {
+  if (ePressed) {
     P1.pickUpDrop(tiles, items, containers);
   }
-  if (key == 'q') {
+  if (qPressed) {
     P1.interact(pTiles, items); 
   }
 }
