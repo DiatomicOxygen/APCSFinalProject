@@ -1,0 +1,46 @@
+public class Counter extends Tile {
+  
+  ArrayList<Container> containers;
+  ArrayList<Item> items;
+  ArrayList<Order> orders;
+  
+  Counter(float x1,float y1,float x2,float y2, ArrayList<Container> containers, ArrayList<Item> items, ArrayList<Order> orders) {
+    super(255, x1, y1, x2, y2);
+    this.orders = orders;
+    this.items = items;
+    this.containers = containers;
+  }
+  
+  void display() {
+    super.display();
+    fill(125);
+    triangle(x1 + (x2 - x1)/8, y1 + (y2 - y1)/4, 
+    x1 + (x2 - x1)/8, y1 + 3 * (y2 - y1)/4,
+    x1 + (x2 - x1)/2, y1 + (y2 - y1)/2 );
+    
+    triangle(x1 + 5 * (x2 - x1)/8, y1 + (y2 - y1)/4, 
+    x1 + 5 * (x2 - x1)/8, y1 + 3 * (y2 - y1)/4,
+    x2, y1 + (y2 - y1)/2 );
+  }
+  
+  boolean putOn(Item a) {
+    int containerIndex = containers.indexOf(a);
+    if (containerIndex > -1) {
+      Container c = containers.get(containerIndex);
+      for (Order o : orders) {
+        if (c.equals(o)) {
+          o.reward();
+          i = a;
+          c.ingredients.clear();
+          c.name = "dirtyPlate";
+          c.c = color(165, 42, 42);
+          return true;
+        }
+      }
+    }
+    return false;  
+  }
+  
+  //retrieve method is the same
+  
+}

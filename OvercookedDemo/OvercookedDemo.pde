@@ -16,7 +16,7 @@ boolean orderAdded = false ;
 void setup() {
   frameRate(30);
   size(1080,720) ;
-  demo(tiles, pTiles,containers) ;
+  demo(tiles, pTiles,containers, orders) ;
   hours = hour() ;
   minutes = minute() ;
   seconds = second() ;
@@ -53,6 +53,7 @@ void draw() {
   } else {
     text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
   }
+  text("Score: " + score,700,65) ;
   for(Tile t : tiles) {
     t.display() ;
   }

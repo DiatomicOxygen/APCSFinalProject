@@ -4,8 +4,8 @@ public class DishDispenser extends Tile {
   ArrayList<Container> containers;
   ArrayList<Item> items;
   
-  DishDispenser(color c, float x1,float y1,float x2,float y2, ArrayList<Container> containers,  ArrayList<Item> items) {
-    super(c,x1,y1,x2,y2) ;
+  DishDispenser(float x1,float y1,float x2,float y2, ArrayList<Container> containers,  ArrayList<Item> items) {
+    super(125,x1,y1,x2,y2) ;
     this.containers = containers;
     this.items = items;
   }

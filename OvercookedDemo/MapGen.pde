@@ -1,4 +1,4 @@
-void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Container> containers) {
+void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Container> containers, ArrayList<Order> orders) {
   //wall generation
   Tile a = new Wall(70,0,100,1080,150) ;
   Tile b = new Wall(70,0,670,1080,720) ;
@@ -26,11 +26,11 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
       tiles.add(crate);
     }
     if (i == 10) {
-      Tile dishes = new DishDispenser(125,x1,y1,x2,y2, containers, items);
+      Tile dishes = new DishDispenser(x1,y1,x2,y2, containers, items);
       tiles.add(dishes);
     }
     if (i == 12) {
-      Tile garbage = new Garbage(125,x1,y1,x2,y2, containers, items);
+      Tile garbage = new Garbage(x1,y1,x2,y2, containers, items);
       tiles.add(garbage);
     }
     tiles.add(new Tile(tan,x1,605,x2,670)) ;
@@ -42,6 +42,12 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     tiles.add(new Tile(tan,117.5,y1,182.5,y2)) ;
     if ((i != 6) && (i != 5)) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;
     if (i != 6) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;
-    tiles.add(new Tile(tan,897.5,y1,962.5,y2)) ;
+    if (i != 4 && i != 5) { 
+      tiles.add(new Tile(tan,897.5,y1,962.5,y2));
+    }
+    if (i == 4) {
+      Tile counter = new Counter(897.5,y1,962.5,y2 + 65, containers, items, orders);
+      tiles.add(counter);
+    }
   }
 }
