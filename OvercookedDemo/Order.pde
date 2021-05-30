@@ -2,9 +2,9 @@ public class Order {
   int curTime ;
   int endTime ;
   Container container;
-  Integer score;
+  int[] score;
   
-  Order(float x, float y, int curTime, int endTime, Integer score) {
+  Order(float x, float y, int curTime, int endTime, int[] score) {
     container = new Container(x,y,255,"plate");
     this.curTime = curTime ;
     this.endTime = endTime ;
@@ -30,7 +30,7 @@ public class Order {
 }
 
   void reward() {
-    score += (endTime - curTime);  
+    score[0] += (endTime - curTime);  
     endTime = 0;
     curTime = 0;
   }

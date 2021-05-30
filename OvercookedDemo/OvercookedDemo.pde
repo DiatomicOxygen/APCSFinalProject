@@ -9,7 +9,7 @@ int hours = 0 ;
 int minutes = 0 ;
 int seconds = 0 ;
 int timer = 300 ;
-Integer score = 0;
+int[] score = new int[1]; 
 Player P1 = new Player(400, 400, WIDTH);
 boolean orderAdded = false ;
 
@@ -52,7 +52,7 @@ void draw() {
   } else {
     text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
   }
-  text("Score: " + score,700,65) ;
+  text("Score: " + score[0],700,65) ;
   for(Tile t : tiles) {
     t.display() ;
   }
