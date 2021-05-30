@@ -13,9 +13,11 @@ public class Player {
   
   void display() {
     stroke(0);
-    fill(255, 0, 0);
+    fill(color(#95D3EA));
     ellipse(x, y, radius*2, radius*2);
     line(x,y,x + cos(direction) * radius, y + sin(direction) * radius);
+    fill(color(255));
+    ellipse(x, y, radius*1.3, radius*1.3);
     if (inHand != null) {
        inHand.setXY(x + cos(direction) * radius, y + sin(direction) * radius); 
     }
@@ -25,6 +27,7 @@ public class Player {
    x += dx;
    y += dy;   
    direction = d;
+   collide(tiles) ;
   }
  
    void collide(ArrayList<Tile> tiles) {
