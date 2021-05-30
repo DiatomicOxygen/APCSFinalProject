@@ -24,16 +24,24 @@ public class Counter extends Tile {
   }
   
   boolean putOn(Item a) {
+    if (empty == false) {
+      return false;  
+    }
     int containerIndex = containers.indexOf(a);
     if (containerIndex > -1) {
       Container c = containers.get(containerIndex);
       for (Order o : orders) {
-        if (c.equals(o)) {
+        if (c.equals(o.container)) {
           o.reward();
-          i = a;
-          c.ingredients.clear();
+          for (int i = c.ingredients.size()-1; i >= 0; i--) {
+            items.remove(c.ingredients.get(i));
+            c.ingredients.remove(i);  
+          }    
           c.name = "dirtyPlate";
           c.c = color(165, 42, 42);
+          i = c;
+          i.setXY((x2-x1)/2+x1,(y2-y1)/2+y1) ;
+          empty = false;
           return true;
         }
       }

@@ -20,7 +20,6 @@ void setup() {
   hours = hour() ;
   minutes = minute() ;
   seconds = second() ;
-  
 }
 
 void draw() {
@@ -29,8 +28,6 @@ void draw() {
   if (timer - timeElapsed < 0) timeElapsed = timer ;
   if (!(orderAdded) && ((timeElapsed % 10) == 0) && (timeElapsed != timer - 15)) {
     Order newOrder = new Order(0,0,timeElapsed,timeElapsed+30,score) ;
-    newOrder.container.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
-    newOrder.container.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
     newOrder.container.putOn(new Ingredient(0,0,color(#2BD668), "cabbage")) ;
     orders.add(newOrder) ;
     orderAdded = true ;

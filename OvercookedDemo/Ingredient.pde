@@ -9,9 +9,6 @@ public class Ingredient extends Item {
   }
   
   //Different diplay method to be implemented
-  
-  boolean equals(Ingredient b) {
-     return this.name.equals(b.name); 
-  }
+ 
   
 }

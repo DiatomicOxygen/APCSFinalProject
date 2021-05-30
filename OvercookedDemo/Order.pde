@@ -31,6 +31,8 @@ public class Order {
 
   void reward() {
     score += (endTime - curTime);  
+    endTime = 0;
+    curTime = 0;
   }
   
 }

@@ -26,5 +26,8 @@ public class Item {
     return c ;
   }
   
+  boolean equals(Item b) {
+     return this.name.equals(b.name); 
+  }
   
 }
