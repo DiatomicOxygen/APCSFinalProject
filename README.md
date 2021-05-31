@@ -8,6 +8,9 @@ Group Members: Edward Oo, Jesse Xie
 Brief Project Description:
 We plan on making a 2D, simplified version of the high paced cooking game, Overcooked. In this game, we want to make it so that the player is able to control a chef that can perform various tasks and prepare dishes to be submitted for points. After a set amount of time, the player is rated on the amount of dishes prepared and the efficiency in which they did so.
 
+How to play:
+Run the code in processing and the game will start. There is a timer at the top right of the screen, and when that is over, the game is over. There is a score counter to the left of the timer, which displays your score. On the left corner, there is a list of orders that you can submit for more points. The time remaining on the order influences the amount of points gained when the dish is submitted. You are controlling the chef, which is the blue circle with a white hat. Use the W, A, S, and D keys to move in their respective directions. Use the E key to pick up any items that are on the floor or on tiles or drop items. Use the Q key to interact with tiles that change ingredients or dispense ingredients (excluding the plate dispenser). To submit, just drop your plate onto the counter (white rectangular tile with arrows). Note that only plates can be submitted. Have fun!
+
 Development Log:
 5/24/21
 Jesse:
