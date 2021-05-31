@@ -51,3 +51,14 @@ Edward:
 - fixed some bugs with pickUpDrop
 - Added garbage can
 - made UI better
+
+5/30/21
+Edward:
+- reward method added for Order
+- Order method revamped to have a Container variable rather than extending container (for display purposes)
+- Changed equals method in Container class to not care about the order in which the ingredients are put onto the plate
+  - Item class now has equals method (to fix issues with calling equals method from subclasses)
+- Counter class added with modified putOn method
+- Score added in main class
+- Fixed collision with 8 directional movement (removed collision with corners of tiles)
+- Added a knife to CuttingBoard
