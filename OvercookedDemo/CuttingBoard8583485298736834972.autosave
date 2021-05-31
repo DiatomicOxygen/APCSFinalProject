@@ -1,0 +1,42 @@
+public class CuttingBoard extends ProcessingTile {
+  
+  Ingredient onTop ;
+  
+  CuttingBoard(color c, float x1, float y1, float x2, float y2) {
+    super(c,x1,y1,x2,y2) ;
+  }
+  
+  boolean putOn(Item a) {
+    if (a.name != "plate") {
+      return putIngredientOn((Ingredient) a) ;
+    }
+    return false ;
+  }
+  
+  boolean putIngredientOn(Ingredient a) {
+    if (empty) {
+      onTop = a ;
+      empty = false ;
+      a.setXY((x2-x1)/2+x1,(y2-y1)/2+y1) ;
+      return true ;
+    }
+    return false ;
+  }
+  
+  Item retrieve() {
+    Ingredient temp = onTop ;
+    onTop = null;
+    empty = true;
+    return temp;
+  }
+  
+  void process(ArrayList<Item> items) {
+    if ((!(empty)) && (onTop.isCuttable)) {
+      onTop.isCut = true ;
+      onTop.isCuttable = false ;
+      onTop.name = "cut_"+onTop.name ;
+    }
+  }
+  
+  
+}
