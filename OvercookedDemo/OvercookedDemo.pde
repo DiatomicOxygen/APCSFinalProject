@@ -30,9 +30,9 @@ void draw() {
   background(230) ; 
   int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
   if (timer - timeElapsed < 0) timeElapsed = timer ;
-  if (!(orderAdded) && ((timeElapsed % 25) == 0) && (timeElapsed != timer - 25)) {
+  if (!(orderAdded) && ((timeElapsed % 25) == 0) && (timeElapsed <= timer - 25)) {
     Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
-    Ingredient newIngredient = new Ingredient(0,0,color(#2BD668), "cabbage",true, false) ;
+    Ingredient newIngredient = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
     newIngredient.isCut = true ;
     newOrder.container.putOn(newIngredient) ;
     orders.add(newOrder) ;
@@ -58,6 +58,7 @@ void draw() {
   } else {
     text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
   }
+  fill(0);
   text("Score: " + score[0],700,65) ;
   for(Tile t : tiles) {
     t.display() ;
@@ -112,12 +113,16 @@ void move() {
   //w
   if (wPressed && ! sPressed) {
     if (aPressed && !dPressed) {
-      P1.move(-3.5355, -3.5355, 5 * (float)Math.PI / 4, tiles);
-      P1.move(-3.5355, -3.5355, 5 * (float)Math.PI / 4, tiles);
+      P1.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
+      P1.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
+      P1.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
+      P1.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
     } 
     else if (dPressed && !aPressed) {
-      P1.move(3.5355, -3.5355, 7 * (float)Math.PI / 4, tiles);
-      P1.move(3.5355, -3.5355, 7 * (float)Math.PI / 4, tiles);
+      P1.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
+      P1.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
+      P1.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
+      P1.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
     } 
     else {
       P1.move(0, -5, 3 * (float)Math.PI / 2, tiles);
@@ -127,12 +132,16 @@ void move() {
   //s
   else if (sPressed && ! wPressed) {
     if (aPressed && !dPressed) {
-      P1.move(-3.5355, 3.5355, 3 * (float)Math.PI / 4, tiles);
-      P1.move(-3.5355, 3.5355, 3 * (float)Math.PI / 4, tiles);
+      P1.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
+      P1.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
+      P1.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
+      P1.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
     } 
     else if (dPressed && !aPressed) {
-      P1.move(3.5355, 3.5355, 1 * (float)Math.PI / 4, tiles);
-      P1.move(3.5355, 3.5355, 1 * (float)Math.PI / 4, tiles);
+      P1.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
+      P1.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
+      P1.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
+      P1.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
     } 
     else {
       P1.move(0, 5, (float)Math.PI / 2, tiles);

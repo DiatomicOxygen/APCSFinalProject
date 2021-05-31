@@ -30,7 +30,7 @@ public class Player {
    collide(tiles) ;
   }
  
-   void collide(ArrayList<Tile> tiles) {
+    void collide(ArrayList<Tile> tiles) {
     for (Tile t: tiles) {
       float testX = x + cos(direction) * radius;
       float testY = y + sin(direction) * radius;

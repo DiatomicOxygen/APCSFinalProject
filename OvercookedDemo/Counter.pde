@@ -37,7 +37,7 @@ public class Counter extends Tile {
             items.remove(c.ingredients.get(i));
             c.ingredients.remove(i);  
           }    
-          c.name = "dirtyPlate";
+          c.name = "dirty_plate";
           c.c = color(165, 42, 42);
           i = c;
           i.setXY((x2-x1)/2+x1,(y2-y1)/2+y1) ;

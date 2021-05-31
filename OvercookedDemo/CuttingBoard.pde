@@ -44,6 +44,7 @@ public class CuttingBoard extends ProcessingTile {
     if ((!(empty)) && (onTop.isCuttable)) {
       onTop.isCut = true ;
       onTop.isCuttable = false ;
+      onTop.name = "cut_" + onTop.name ;
     }
   }
   

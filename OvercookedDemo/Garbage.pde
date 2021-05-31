@@ -20,7 +20,7 @@ public class Garbage extends Tile {
   boolean putOn(Item a) {
     int containerIndex = containers.indexOf(a);
     if (containerIndex > -1) {
-      ArrayList<Item> trash = containers.get(containerIndex).ingredients;
+      ArrayList<Ingredient> trash = containers.get(containerIndex).ingredients;
       for (int i = trash.size()-1; i >= 0; i--) {
         items.remove(trash.get(i));
         trash.remove(i);  

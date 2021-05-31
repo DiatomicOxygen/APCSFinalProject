@@ -53,6 +53,14 @@ Edward:
 - made UI better
 
 5/30/21
+Jesse:
+- Added eight directional movement (although with bugs)
+- Smoothed out movement (no delay when changing directionO
+- Added cuttingBoard class
+- Fleshed out ingredient class and properties
+- Added cut variant for cabbages
+- Fixed other bugs
+
 Edward:
 - reward method added for Order
 - Order method revamped to have a Container variable rather than extending container (for display purposes)
