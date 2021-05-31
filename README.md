@@ -60,6 +60,7 @@ Jesse:
 - Fleshed out ingredient class and properties
 - Added cut variant for cabbages
 - Fixed other bugs
+- Altered methods to interact with the Ingredient class better
 
 Edward:
 - reward method added for Order
