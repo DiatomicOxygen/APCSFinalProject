@@ -27,7 +27,7 @@ public class Crate extends ProcessingTile {
   
   //uses super.retrieve();
   
-  void process(ArrayList<Item> items) {
+  void process(ArrayList<Item> items, Player p) {
     if (empty) {
       this.i = new Ingredient((x2+x1)/2,(y2+y1)/2,type.getColor(),type.name,true,false);
       items.add(i);

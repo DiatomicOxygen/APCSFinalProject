@@ -3,6 +3,7 @@ ArrayList<Item> items = new ArrayList<Item>();
 ArrayList<Container> containers = new ArrayList<Container>();
 ArrayList<ProcessingTile> pTiles = new ArrayList<ProcessingTile>();
 ArrayList<Order> orders = new ArrayList<Order>();
+CuttingBoard P1CuttingBoard = new CuttingBoard(0,0,0,0,0) ;
 float WIDTH = 1080;
 float HEIGHT = 720;
 int hours = 0 ;
@@ -16,6 +17,8 @@ boolean wPressed = false;
 boolean aPressed = false; 
 boolean sPressed = false; 
 boolean dPressed = false; 
+int actionStart = (hour()) * 3600 + (minute()) * 60 + (second()) ;
+
 
 void setup() {
   frameRate(30);
@@ -71,11 +74,18 @@ void draw() {
   textSize(20);
   text("FPS: "+frameRate,10,700) ;
   move() ;
+  if (P1.busy) {
+    if ((hour()) * 3600 + (minute()) * 60 + (second()) == actionStart+10) {
+      println((hour()) * 3600 + (minute()) * 60 + (second())) ;
+      P1CuttingBoard.completeCutting(P1) ;
+    }
+  }
 }
 
 void keyPressed() {
   if (key == 'q') {
     P1.interact(pTiles, items); 
+    if (! P1.busy) actionStart = (hour()) * 3600 + (minute()) * 60 + (second()) ;
   }
   if (key == 'e') {
     P1.pickUpDrop(tiles, items, containers);
