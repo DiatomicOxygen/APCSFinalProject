@@ -44,6 +44,7 @@ public class CuttingBoard extends ProcessingTile {
     if ((!(empty)) && (onTop.isCuttable)) {
       p.busy = true ;
       P1CuttingBoard = this ;
+      actionStart = (hour()) * 3600 + (minute()) * 60 + (second()) ;
     }
     
   }
