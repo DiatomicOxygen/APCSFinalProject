@@ -7,12 +7,13 @@ public class Container extends Item {
     super(x,y,c);
     this.name = name;
     ingredients = new ArrayList<Ingredient>();
+    radius = width/42;
   }
   
   void display() {
      super.display();
-     for (Ingredient i : ingredients) {
-       i.setXY(x,y);  
+     for (int i = 0; i < ingredients.size(); i++) {
+       ingredients.get(i).setXY(x+(i-1)*3,y);  
      }
   }
   

@@ -78,7 +78,8 @@ public class Player {
           }
        }
        for (Item i : items) {
-          if(dist(i.x, i.y, x, y) <= radius * 1.5) {
+          if(dist(i.x, i.y, x, y) <= radius * 1.5 || 
+          dist(i.x, i.y, xInFront, yInFront) <= radius * 2) {
             inHand = i;
             return true;
           } 
