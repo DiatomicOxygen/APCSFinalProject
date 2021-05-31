@@ -5,6 +5,16 @@ public class CuttingBoard extends ProcessingTile {
   CuttingBoard(color c, float x1, float y1, float x2, float y2) {
     super(c,x1,y1,x2,y2) ;
   }
+
+  void display() {
+    super.display();
+    fill(255);
+    triangle(x1 + (x2-x1)/8, y1 + (y2 - y1)/8, 
+    x1 + (x2-x1)/8, y1 + 5 * (y2 - y1)/8, 
+    x1 + 3 * (x2-x1)/8, y1 + 5 * (y2 - y1)/8);
+    fill(0);
+    rect(x1 + (x2-x1)/8, y1 + 5 * (y2 - y1)/8, (x2-x1)/8, 2 * (y2 - y1)/8 );
+  }
   
   boolean putOn(Item a) {
     if (a.name != "plate") {
