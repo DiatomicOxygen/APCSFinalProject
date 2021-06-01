@@ -74,20 +74,6 @@ void draw() {
   textSize(20);
   text("FPS: "+frameRate,10,700) ;
   move() ;
-  if (P1.busy) {
-    int curTime = (hour()) * 3600 + (minute()) * 60 + (second()) ;
-    fill(255) ;
-    rect(P1.x+25,P1.y-25,50,-10) ;
-    colorMode(HSB,359,100,100) ;
-    color c = color((curTime-actionStart)*20-10,90,90) ;
-    fill(c) ;
-    rect(P1.x+27,P1.y-27,46*((curTime-actionStart)/5.0),-6) ;
-    colorMode(RGB,255,255,255) ;
-    if (curTime >= actionStart+5) {
-      println(curTime) ;
-      P1CuttingBoard.completeCutting(P1) ;
-    }
-  }
 }
 
 void keyPressed() {

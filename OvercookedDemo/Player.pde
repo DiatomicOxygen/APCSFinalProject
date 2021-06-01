@@ -4,14 +4,16 @@ public class Player {
   Item inHand;
   float direction = 0;
   boolean colliding;
-  boolean busy ;
-  int dashing = -50; 
+  int busy;
+  int dashing; 
+  int duration;
   
   Player(float x, float y, float width) {
     this.x = x;
     this.y = y;
     radius = width / 40;
-    busy = false ;
+    busy = -1 ;
+    dashing = -50;
   }
   
   void display() {
@@ -24,10 +26,20 @@ public class Player {
     if (inHand != null) {
        inHand.setXY(x + cos(direction) * radius, y + sin(direction) * radius); 
     }
+    if (busy > 0) {
+      fill(255) ;
+      rect(x+25,y-25,50,-10) ;
+      colorMode(HSB,359,100,100) ;
+      color c = color(100 * (busy)/duration-10,90,90) ;
+      fill(c) ;
+      rect(x+27,y-27,46*((float)(duration - busy)/duration),-6) ;
+    }
+    colorMode(RGB,255,255,255) ;
+    busy--;
   }
   
   void move (float dx, float dy, float d, ArrayList<Tile> tiles) {
-    if (! busy) {
+    if (busy < 0) {
      x += dx;
      y += dy;
      if (dashing > 0) {
@@ -58,7 +70,7 @@ public class Player {
   }
   
   boolean pickUpDrop(ArrayList<Tile> tiles, ArrayList<Item> items, ArrayList<Container> containers) {
-    if (! busy) {
+    if (busy < 0) {
       float xInFront = x + cos(direction)*45 ;
       float yInFront = y + sin(direction)*45 ;
       if(inHand != null) {
@@ -106,7 +118,7 @@ public class Player {
   }
   
   void interact(ArrayList<ProcessingTile> pTiles, ArrayList<Item> items) {
-   if (! busy) {
+   if (busy < 0) {
      for (ProcessingTile pT : pTiles) {
        float xInFront = x + cos(direction)*55 ;
        float yInFront = y + sin(direction)*55 ;

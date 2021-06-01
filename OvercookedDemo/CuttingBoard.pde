@@ -42,18 +42,13 @@ public class CuttingBoard extends ProcessingTile {
   
   void process(ArrayList<Item> items, Player p) {
     if ((!(empty)) && (onTop.isCuttable)) {
-      p.busy = true ;
-      P1CuttingBoard = this ;
-      actionStart = (hour()) * 3600 + (minute()) * 60 + (second()) ;
-    }
-    
-  }
-  void completeCutting(Player p) {
+      p.busy = 120 ;
+      p.duration = 120 ;
       onTop.isCut = true ;
       onTop.isCuttable = false ;
       onTop.name = "cut_" + onTop.name ;
-      p.busy = false ;
-      P1CuttingBoard = new CuttingBoard(0,0,0,0,0) ;
+    }
+    
   }
   
   
