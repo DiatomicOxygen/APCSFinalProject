@@ -97,6 +97,11 @@ void keyPressed() {
   if (key == 'e') {
     P1.pickUpDrop(tiles, items, containers);
   }
+  if (key == ' ') {
+    if (P1.dashing < -50) {
+      P1.dashing = 10;  
+    }
+  }
   if (key == 'w') {
     wPressed = true ;
   }

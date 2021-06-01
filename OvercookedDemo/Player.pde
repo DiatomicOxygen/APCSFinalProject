@@ -5,6 +5,7 @@ public class Player {
   float direction = 0;
   boolean colliding;
   boolean busy ;
+  int dashing = -50; 
   
   Player(float x, float y, float width) {
     this.x = x;
@@ -28,20 +29,29 @@ public class Player {
   void move (float dx, float dy, float d, ArrayList<Tile> tiles) {
     if (! busy) {
      x += dx;
-     y += dy;   
+     y += dy;
+     if (dashing > 0) {
+       x += dx;
+       y += dy;
+     }
      direction = d;
      collide(tiles) ;
+     dashing--;
     }
   }
  
     void collide(ArrayList<Tile> tiles) {
+    int d = 1;
+    if (dashing > 0) {
+      d++;  
+    }
     for (Tile t: tiles) {
       float testX = x + cos(direction) * radius;
       float testY = y + sin(direction) * radius;
       boolean colliding = testX >= t.x1 && testX <= t.x2 && testY >= t.y1 && testY <= t.y2;
       if (colliding) {
-        x -= cos(direction) * 5;
-        y -= sin(direction) * 5;
+        x -= cos(direction) * 5 * d;
+        y -= sin(direction) * 5 * d;
       }
     }
 
