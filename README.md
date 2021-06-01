@@ -74,3 +74,10 @@ Edward:
 - Score added in main class
 - Fixed collision with 8 directional movement (removed collision with corners of tiles)
 - Added a knife to CuttingBoard
+
+5/31/21
+Edward:
+- fixed a bug with picking up Items near a Tile
+- added a dashing/speed boost mechanic for the player
+  - keybinded to spacebar
+- moved player waiting logic into Player class (for easier implmentation in future ProcessingTiles)
