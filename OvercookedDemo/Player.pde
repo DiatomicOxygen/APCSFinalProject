@@ -23,11 +23,17 @@ public class Player {
   
   void display() {
     stroke(0);
+    //body
     fill(c);
     ellipse(x, y, radius*2, radius*2);
-    line(x,y,x + cos(direction) * radius, y + sin(direction) * radius);
+    //eyes
+    fill(0) ;
+    ellipse(x+cos(direction-radians(20))*22.5,y+sin(direction-radians(20))*22.5,5,5) ;
+    ellipse(x+cos(direction+radians(20))*22.5,y+sin(direction+radians(20))*22.5,5,5) ;
+    //hat
     fill(color(255));
     if (! active) fill(#E8E8E8) ;
+    
     ellipse(x, y, radius*1.3, radius*1.3);
     if (inHand != null) {
        inHand.setXY(x + cos(direction) * radius, y + sin(direction) * radius); 

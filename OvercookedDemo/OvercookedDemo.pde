@@ -64,7 +64,8 @@ void draw() {
   if ((timer - timeElapsed)%60 > 10) {
     text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
   } else {
-    text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
+    if ((timer - timeElapsed)%60 == 10) text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
+    else text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
   }
   fill(0);
   text("Score: " + score[0],700,65) ;
