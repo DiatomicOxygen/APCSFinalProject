@@ -3,6 +3,7 @@ public class Counter extends Tile {
   ArrayList<Container> containers;
   ArrayList<Item> items;
   ArrayList<Order> orders;
+  boolean easyMode = true;
   
   Counter(float x1,float y1,float x2,float y2, ArrayList<Container> containers, ArrayList<Item> items, ArrayList<Order> orders) {
     super(255, x1, y1, x2, y2);
@@ -36,7 +37,13 @@ public class Counter extends Tile {
           for (int i = c.ingredients.size()-1; i >= 0; i--) {
             items.remove(c.ingredients.get(i));
             c.ingredients.remove(i);  
-          }    
+          }
+          if (easyMode) {
+            containers.remove(c);
+            items.remove(c);
+            empty = false;
+            return true;
+          }
           c.name = "dirty_plate";
           c.c = color(165, 42, 42);
           i = c;
