@@ -8,6 +8,7 @@ public class Player {
   int dashing; 
   int duration;
   color c ;
+  boolean active ;
   
   Player(float x, float y, float width, color c) {
     this.x = x;
@@ -17,6 +18,8 @@ public class Player {
     dashing = -50;
     this.c = c ;
   }
+  
+  
   
   void display() {
     stroke(0);
@@ -40,7 +43,7 @@ public class Player {
     busy--;
   }
   
-  void move (float dx, float dy, float d, ArrayList<Tile> tiles) {
+  void move (float dx, float dy, float d, ArrayList<Tile> tiles, Player p) {
     if (busy < 0) {
      x += dx;
      y += dy;
@@ -49,12 +52,12 @@ public class Player {
        y += dy;
      }
      direction = d;
-     collide(tiles) ;
+     collide(tiles,p) ;
      dashing--;
     }
   }
  
-    void collide(ArrayList<Tile> tiles) {
+    void collide(ArrayList<Tile> tiles, Player p) {
     int d = 1;
     if (dashing > 0) {
       d++;  
@@ -63,6 +66,7 @@ public class Player {
       float testX = x + cos(direction) * radius;
       float testY = y + sin(direction) * radius;
       boolean colliding = testX >= t.x1 && testX <= t.x2 && testY >= t.y1 && testY <= t.y2;
+      colliding = colliding || (dist(p.x,p.y,this.x,this.y) <= radius * 2) ;
       if (colliding) {
         x -= cos(direction) * 5 * d;
         y -= sin(direction) * 5 * d;

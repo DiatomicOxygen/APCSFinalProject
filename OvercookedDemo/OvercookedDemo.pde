@@ -143,52 +143,53 @@ void move() {
   //w
   Player p = P1 ;
   if (activePlayer == 2) p = P2 ;
-  
+  Player other = P2 ;
+  if (activePlayer == 2) other = P1 ;
   if (wPressed && ! sPressed) {
     if (aPressed && !dPressed) {
-      p.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
-      p.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
-      p.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
-      p.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
+      p.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles,other);
+      p.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles,other);
+      p.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles,other);
+      p.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles,other);
     } 
     else if (dPressed && !aPressed) {
-      p.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
-      p.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
-      p.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
-      p.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
+      p.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles,other);
+      p.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles,other);
+      p.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles,other);
+      p.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles,other);
     } 
     else {
-      p.move(0, -5, 3 * (float)Math.PI / 2, tiles);
-      p.move(0, -5, 3 * (float)Math.PI / 2, tiles);
+      p.move(0, -5, 3 * (float)Math.PI / 2, tiles,other);
+      p.move(0, -5, 3 * (float)Math.PI / 2, tiles,other);
     }
   }
   //s
   else if (sPressed && ! wPressed) {
     if (aPressed && !dPressed) {
-      p.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
-      p.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
-      p.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
-      p.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
+      p.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles,other);
+      p.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles,other);
+      p.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles,other);
+      p.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles,other);
     } 
     else if (dPressed && !aPressed) {
-      p.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
-      p.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
-      p.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
-      p.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
+      p.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles,other);
+      p.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles,other);
+      p.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles,other);
+      p.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles,other);
     } 
     else {
-      p.move(0, 5, (float)Math.PI / 2, tiles);
-      p.move(0, 5, (float)Math.PI / 2, tiles);
+      p.move(0, 5, (float)Math.PI / 2, tiles,other);
+      p.move(0, 5, (float)Math.PI / 2, tiles,other);
     }
   }
   //a
   else if (aPressed && ! dPressed) {
-    p.move(-5, 0, (float)Math.PI, tiles);
-    p.move(-5, 0, (float)Math.PI, tiles);
+    p.move(-5, 0, (float)Math.PI, tiles,other);
+    p.move(-5, 0, (float)Math.PI, tiles,other);
   }
   //d
   else if (dPressed && ! aPressed) {
-    p.move(5, 0, 0, tiles);
-    p.move(5, 0, 0, tiles);
+    p.move(5, 0, 0, tiles,other);
+    p.move(5, 0, 0, tiles,other);
   }
 }
