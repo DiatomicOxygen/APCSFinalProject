@@ -108,7 +108,9 @@ public class Player {
         for (Tile t : tiles) {
             if ((t.x1 < xInFront) && (t.x2 > xInFront) && (t.y1 < yInFront) && (t.y2 > yInFront)) {
               inHand = t.retrieve();
-              return true;
+              if (inHand != null) {
+                return true;
+              }
             }
          }
          for (Item i : items) {
