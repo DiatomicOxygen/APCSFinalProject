@@ -31,6 +31,7 @@ void setup() {
   minutes = minute() ;
   seconds = second() ;
   activePlayer = 1 ;
+  P1.active = true ;
 }
 
 void draw() {
@@ -88,15 +89,21 @@ void keyPressed() {
     boolean changed = false ;
     if ((activePlayer == 1) && ! changed) {
        activePlayer = 2 ;
+       P1.active = false ;
+       P2.active = true ;
        changed = true ;
     }
     if ((activePlayer == 2) && ! changed) {
        activePlayer = 1 ;
+       P2.active = false ;
+       P1.active = true ;
        changed = true ;
     }
   }
   Player p = P1 ;
-  if (activePlayer == 2) p = P2 ;
+  if (activePlayer == 2) {
+    p = P2 ;
+  }
   if (key == 'q') {
     p.interact(pTiles, items); 
   }

@@ -27,6 +27,7 @@ public class Player {
     ellipse(x, y, radius*2, radius*2);
     line(x,y,x + cos(direction) * radius, y + sin(direction) * radius);
     fill(color(255));
+    if (! active) fill(#E8E8E8) ;
     ellipse(x, y, radius*1.3, radius*1.3);
     if (inHand != null) {
        inHand.setXY(x + cos(direction) * radius, y + sin(direction) * radius); 
