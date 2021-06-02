@@ -39,6 +39,14 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
       tiles.add(garbage);
     }
     tiles.add(new Tile(tan,x1,605,x2,670)) ;
+    //if (i != 4 && i != 5) {
+    //  tiles.add(new Tile(tan,x1,605,x2,670)) ;
+    //}
+    //if (i == 4) {
+    //  ProcessingTile sink = new Sink(x1,605,x2+65,670);
+    //  pTiles.add(sink);
+    //  tiles.add(sink);
+    //}
   }
   for(int i=1; i<=6; i++) {
     color tan = color(#D3BC91) ;
@@ -51,7 +59,7 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
       tiles.add(new Tile(tan,897.5,y1,962.5,y2));
     }
     if (i == 4) {
-      Tile counter = new Counter(897.5,y1,962.5,y2 + 65, containers, items, orders);
+      Counter counter = new Counter(897.5,y1,962.5,y2 + 65, containers, items, orders);
       tiles.add(counter);
     }
   }
