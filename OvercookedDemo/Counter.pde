@@ -39,9 +39,10 @@ public class Counter extends Tile {
             c.ingredients.remove(i);  
           }
           if (easyMode) {
-            containers.remove(c);
+            containers.remove(containerIndex);
             items.remove(c);
-            empty = false;
+            this.i = null;
+            empty = true;
             return true;
           }
           c.name = "dirty_plate";
