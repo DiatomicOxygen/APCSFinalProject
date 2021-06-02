@@ -4,6 +4,7 @@ ArrayList<Container> containers = new ArrayList<Container>();
 ArrayList<ProcessingTile> pTiles = new ArrayList<ProcessingTile>();
 ArrayList<Order> orders = new ArrayList<Order>();
 CuttingBoard P1CuttingBoard = new CuttingBoard(0,0,0,0,0) ;
+CuttingBoard P2CuttingBoard = new CuttingBoard(0,0,0,0,0) ;
 float WIDTH = 1080;
 float HEIGHT = 720;
 int hours = 0 ;
@@ -11,13 +12,15 @@ int minutes = 0 ;
 int seconds = 0 ;
 int timer = 300 ;
 int[] score = new int[1]; 
-Player P1 = new Player(400, 400, WIDTH);
+Player P1 = new Player(400, 400, WIDTH,#95D3EA);
+Player P2 = new Player(800, 400, WIDTH,#ED6C6C);
 boolean orderAdded = false ;
 boolean wPressed = false; 
 boolean aPressed = false; 
 boolean sPressed = false; 
 boolean dPressed = false; 
 int actionStart = (hour()) * 3600 + (minute()) * 60 + (second()) ;
+int activePlayer = 0 ;
 
 
 void setup() {
@@ -27,6 +30,7 @@ void setup() {
   hours = hour() ;
   minutes = minute() ;
   seconds = second() ;
+  activePlayer = 1 ;
 }
 
 void draw() {
@@ -70,22 +74,38 @@ void draw() {
     i.display(); 
   }
   P1.display();
+  P2.display();
   fill(255);
   textSize(20);
   text("FPS: "+frameRate,10,700) ;
   move() ;
+  
 }
 
 void keyPressed() {
+  if (key == 'r') {
+    println(activePlayer) ;
+    boolean changed = false ;
+    if ((activePlayer == 1) && ! changed) {
+       activePlayer = 2 ;
+       changed = true ;
+    }
+    if ((activePlayer == 2) && ! changed) {
+       activePlayer = 1 ;
+       changed = true ;
+    }
+  }
+  Player p = P1 ;
+  if (activePlayer == 2) p = P2 ;
   if (key == 'q') {
-    P1.interact(pTiles, items); 
+    p.interact(pTiles, items); 
   }
   if (key == 'e') {
-    P1.pickUpDrop(tiles, items, containers);
+    p.pickUpDrop(tiles, items, containers);
   }
   if (key == ' ') {
-    if (P1.dashing < -50) {
-      P1.dashing = 10;  
+    if (p.dashing < -50) {
+      p.dashing = 10;  
     }
   }
   if (key == 'w') {
@@ -100,6 +120,7 @@ void keyPressed() {
   else if (key == 'd') {
     dPressed = true ;
   }
+  
 }
 
 void keyReleased() {
@@ -115,55 +136,59 @@ void keyReleased() {
   else if (key == 'd') {
     dPressed = false ;
   }
+  
 }
 
 void move() {
   //w
+  Player p = P1 ;
+  if (activePlayer == 2) p = P2 ;
+  
   if (wPressed && ! sPressed) {
     if (aPressed && !dPressed) {
-      P1.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
-      P1.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
-      P1.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
-      P1.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
+      p.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
+      p.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
+      p.move(-3.5355, 0, 5 * (float)Math.PI / 4, tiles);
+      p.move(0, -3.5355, 5 * (float)Math.PI / 4, tiles);
     } 
     else if (dPressed && !aPressed) {
-      P1.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
-      P1.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
-      P1.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
-      P1.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
+      p.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
+      p.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
+      p.move(3.5355, 0, 7 * (float)Math.PI / 4, tiles);
+      p.move(0, -3.5355, 7 * (float)Math.PI / 4, tiles);
     } 
     else {
-      P1.move(0, -5, 3 * (float)Math.PI / 2, tiles);
-      P1.move(0, -5, 3 * (float)Math.PI / 2, tiles);
+      p.move(0, -5, 3 * (float)Math.PI / 2, tiles);
+      p.move(0, -5, 3 * (float)Math.PI / 2, tiles);
     }
   }
   //s
   else if (sPressed && ! wPressed) {
     if (aPressed && !dPressed) {
-      P1.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
-      P1.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
-      P1.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
-      P1.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
+      p.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
+      p.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
+      p.move(0, 3.5355, 3 * (float)Math.PI / 4, tiles);
+      p.move(-3.5355, 0, 3 * (float)Math.PI / 4, tiles);
     } 
     else if (dPressed && !aPressed) {
-      P1.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
-      P1.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
-      P1.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
-      P1.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
+      p.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
+      p.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
+      p.move(0, 3.5355, 1 * (float)Math.PI / 4, tiles);
+      p.move(3.5355, 0, 1 * (float)Math.PI / 4, tiles);
     } 
     else {
-      P1.move(0, 5, (float)Math.PI / 2, tiles);
-      P1.move(0, 5, (float)Math.PI / 2, tiles);
+      p.move(0, 5, (float)Math.PI / 2, tiles);
+      p.move(0, 5, (float)Math.PI / 2, tiles);
     }
   }
   //a
   else if (aPressed && ! dPressed) {
-    P1.move(-5, 0, (float)Math.PI, tiles);
-    P1.move(-5, 0, (float)Math.PI, tiles);
+    p.move(-5, 0, (float)Math.PI, tiles);
+    p.move(-5, 0, (float)Math.PI, tiles);
   }
   //d
   else if (dPressed && ! aPressed) {
-    P1.move(5, 0, 0, tiles);
-    P1.move(5, 0, 0, tiles);
+    p.move(5, 0, 0, tiles);
+    p.move(5, 0, 0, tiles);
   }
 }

@@ -7,18 +7,20 @@ public class Player {
   int busy;
   int dashing; 
   int duration;
+  color c ;
   
-  Player(float x, float y, float width) {
+  Player(float x, float y, float width, color c) {
     this.x = x;
     this.y = y;
     radius = width / 40;
     busy = -1 ;
     dashing = -50;
+    this.c = c ;
   }
   
   void display() {
     stroke(0);
-    fill(color(#95D3EA));
+    fill(c);
     ellipse(x, y, radius*2, radius*2);
     line(x,y,x + cos(direction) * radius, y + sin(direction) * radius);
     fill(color(255));
@@ -30,7 +32,7 @@ public class Player {
       fill(255) ;
       rect(x+25,y-25,50,-10) ;
       colorMode(HSB,359,100,100) ;
-      color c = color(100 * (busy)/duration-10,90,90) ;
+      color c = color(100 - 100 * (busy)/duration-10,90,90) ;
       fill(c) ;
       rect(x+27,y-27,46*((float)(duration - busy)/duration),-6) ;
     }
