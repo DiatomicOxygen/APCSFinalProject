@@ -38,54 +38,10 @@ void draw() {
   background(230) ; 
   int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
   if (timer - timeElapsed < 0) timeElapsed = timer ;
-  if (!(orderAdded) && ((timeElapsed % 25) == 0) && (timeElapsed <= timer - 25)) {
-    Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
-    Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
-    Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
-    cabbage.isCut = true ;
-    tomato.isCut = true ;
-    newOrder.container.putOn(cabbage) ;
-    if(Math.random() > .5) {
-       newOrder.container.putOn(tomato) ;
-    }
-    orders.add(newOrder) ;
-    orderAdded = true ;
+  inGameDisplay(timeElapsed);
+  if (timer == timeElapsed) {
+    gameOverDisplay();  
   }
-  if ((timeElapsed % 18) == 3) orderAdded = false ;
-  float x = 0 ;
-  Order removed = new Order(1,1,1,1,2,score) ;
-  for(Order o : orders) {
-    o.curTime = timeElapsed ; 
-    o.display(20 + x*108, 10) ;
-    if (o.curTime >= o.endTime) {
-      removed = o ;
-    }
-    x++ ;
-  }
-  orders.remove(removed) ;
-  fill(0);
-  textSize(40);
-  if (timer - timeElapsed <= 10) fill(color(#F54343)) ;
-  if ((timer - timeElapsed)%60 > 10) {
-    text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
-  } else {
-    if ((timer - timeElapsed)%60 == 10) text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
-    else text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
-  }
-  fill(0);
-  text("Score: " + score[0],700,65) ;
-  for(Tile t : tiles) {
-    t.display() ;
-  }
-  for (Item i : items) {
-    i.display(); 
-  }
-  P1.display();
-  P2.display();
-  fill(255);
-  textSize(20);
-  text("FPS: "+frameRate,10,700) ;
-  move() ;
 } 
   
 
@@ -207,6 +163,57 @@ void move() {
   }
 }
 
+void inGameDisplay(int timeElapsed) { 
+ if (!(orderAdded) && ((timeElapsed % 25) == 0) && (timeElapsed <= timer - 25)) {
+    Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
+    Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
+    Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
+    cabbage.isCut = true ;
+    tomato.isCut = true ;
+    newOrder.container.putOn(cabbage) ;
+    if(Math.random() > .5) {
+       newOrder.container.putOn(tomato) ;
+    }
+    orders.add(newOrder) ;
+    orderAdded = true ;
+  }
+  if ((timeElapsed % 18) == 3) orderAdded = false ;
+  float x = 0 ;
+  Order removed = new Order(1,1,1,1,2,score) ;
+  for(Order o : orders) {
+    o.curTime = timeElapsed ; 
+    o.display(20 + x*108, 10) ;
+    if (o.curTime >= o.endTime) {
+      removed = o ;
+    }
+    x++ ;
+  }
+  orders.remove(removed) ;
+  fill(0);
+  textSize(40);
+  if (timer - timeElapsed <= 10) fill(color(#F54343)) ;
+  if ((timer - timeElapsed)%60 > 10) {
+    text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
+  } else {
+    if ((timer - timeElapsed)%60 == 10) text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
+    else text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
+  }
+  fill(0);
+  text("Score: " + score[0],700,65) ;
+  for(Tile t : tiles) {
+    t.display() ;
+  }
+  for (Item i : items) {
+    i.display(); 
+  }
+  P1.display();
+  P2.display();
+  fill(255);
+  textSize(20);
+  text("FPS: "+frameRate,10,700) ;
+  move() ; 
+}
+
 void gameOverDisplay() {
     String endText = "Better luck next time!";
     stroke(0);
@@ -225,6 +232,8 @@ void gameOverDisplay() {
       c3 = color(#FFFF00);
       endText = "Culinary genius!";
     }
+    fill(80, 100);
+    rect(1080/2 - 300, 720/2 - 125 ,600, 325);
     fill(c1);
     ellipse(1080/2 - 150, 720/2 + 100, 100, 100);
     fill(c2);
