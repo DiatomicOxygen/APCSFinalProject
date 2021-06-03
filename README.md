@@ -82,7 +82,7 @@ Edward:
   - keybinded to spacebar
 - moved player waiting logic into Player class (for easier implmentation in future ProcessingTiles)
 
-Jesse: 
+Jesse:
 - Added waiting time for cutting action
 - Added progress bar for cutting
 
@@ -92,3 +92,12 @@ Jesse:
 - Added ability to control 2 cooks by switching between them with 'r'
 - Added collision between players, edited visuals of cooks a bit
 - Map changes
+
+Edward:
+- added easyMode in Counter so that dirty_plates are not returned
+- Sink class added (converts dirty plates to plates with player interaction)
+- fixed a bug where the player could not pick up items near empty tiles
+- tomato crate added and tomato added to orders
+- game states added in different display methods
+  - split into gameOverDisplay and inGameDisplay
+  - created gameOverDisplay
