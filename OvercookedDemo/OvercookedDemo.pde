@@ -40,9 +40,14 @@ void draw() {
   if (timer - timeElapsed < 0) timeElapsed = timer ;
   if (!(orderAdded) && ((timeElapsed % 25) == 0) && (timeElapsed <= timer - 25)) {
     Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
-    Ingredient newIngredient = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
-    newIngredient.isCut = true ;
-    newOrder.container.putOn(newIngredient) ;
+    Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
+    Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
+    cabbage.isCut = true ;
+    tomato.isCut = true ;
+    newOrder.container.putOn(cabbage) ;
+    if(Math.random() > .5) {
+       newOrder.container.putOn(tomato) ;
+    }
     orders.add(newOrder) ;
     orderAdded = true ;
   }
