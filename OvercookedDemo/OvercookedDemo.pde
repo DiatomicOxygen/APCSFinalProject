@@ -51,7 +51,7 @@ void draw() {
     orders.add(newOrder) ;
     orderAdded = true ;
   }
-  if ((timeElapsed % 25) == 3) orderAdded = false ;
+  if ((timeElapsed % 18) == 3) orderAdded = false ;
   float x = 0 ;
   Order removed = new Order(1,1,1,1,2,score) ;
   for(Order o : orders) {
@@ -86,8 +86,8 @@ void draw() {
   textSize(20);
   text("FPS: "+frameRate,10,700) ;
   move() ;
+} 
   
-}
 
 void keyPressed() {
   if (key == 'r') {
@@ -205,4 +205,33 @@ void move() {
     p.move(5, 0, 0, tiles,other);
     p.move(5, 0, 0, tiles,other);
   }
+}
+
+void gameOverDisplay() {
+    String endText = "Better luck next time!";
+    stroke(0);
+    color c1 = 230;
+    color c2 = 230;
+    color c3 = 230;
+    if (score[0] >= 50) {
+      c1 = color(#FFFF00);
+      endText = "An apprentice's skill!";
+    }
+    if (score[0] >= 100) {
+      c2 = color(#FFFF00);
+      endText = "Not bad for a beginner!";
+    }
+    if (score[0] >= 150) {
+      c3 = color(#FFFF00);
+      endText = "Culinary genius!";
+    }
+    fill(c1);
+    ellipse(1080/2 - 150, 720/2 + 100, 100, 100);
+    fill(c2);
+    ellipse(1080/2 , 720/2 + 100, 100, 100);
+    fill(c3);
+    ellipse(1080/2 + 150, 720/2 + 100, 100, 100);
+    fill(0);
+    textSize(40);
+    text(endText, 1080/3, 720/2 - 50);  
 }
