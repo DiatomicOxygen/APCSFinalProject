@@ -81,3 +81,14 @@ Edward:
 - added a dashing/speed boost mechanic for the player
   - keybinded to spacebar
 - moved player waiting logic into Player class (for easier implmentation in future ProcessingTiles)
+
+Jesse: 
+- Added waiting time for cutting action
+- Added progress bar for cutting
+
+
+6/2/21
+Jesse:
+- Added ability to control 2 cooks by switching between them with 'r'
+- Added collision between players, edited visuals of cooks a bit
+- Map changes
