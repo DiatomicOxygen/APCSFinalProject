@@ -108,3 +108,8 @@ Edward:
 - made difficulty a bit easier (orders every 21s instead of 18s)
 - created UML V2 on google Docs
 - created presentationDemo branch for presentation
+
+Jesse:
+- Added images for tomatoes and cabbages (on crate, uncut, cut, on plate)
+- Fixed other bugs
+
