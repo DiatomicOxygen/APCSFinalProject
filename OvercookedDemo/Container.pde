@@ -15,6 +15,7 @@ public class Container extends Item {
      image(loadImage("plate.png"),x,y) ;
      for (int i = 0; i < ingredients.size(); i++) {
        String name = ingredients.get(i).name ;
+       imageMode(CENTER) ;
        if (name.equals("cut_cabbage")) {
           if (rotation == 3 * (float)Math.PI / 2) {
             image(loadImage("cabbage_plate_0.png"),x,y) ;
@@ -43,8 +44,36 @@ public class Container extends Item {
           
           imageMode(CORNER) ;
        }
-
-        
+        if (name.equals("cut_tomato")) {
+          imageMode(CENTER) ;
+          if (rotation == 3 * (float)Math.PI / 2) {
+            image(loadImage("tomato_plate_0.png"),x,y) ;
+          }
+          if (rotation == 7 * (float)Math.PI / 4) {
+            image(loadImage("tomato_plate_1.png"),x,y) ;
+          }
+          if (rotation == 0) {
+            image(loadImage("tomato_plate_2.png"),x,y) ;
+          }
+          if (rotation == 1 * (float)Math.PI / 4) {
+            image(loadImage("tomato_plate_3.png"),x,y) ;
+          }
+          if (rotation == (float)Math.PI / 2) {
+            image(loadImage("tomato_plate_4.png"),x,y) ;
+          }
+          if (rotation == 3 * (float)Math.PI / 4) {
+            image(loadImage("tomato_plate_5.png"),x,y) ;
+          }
+          if (rotation == (float)Math.PI) {
+            image(loadImage("tomato_plate_6.png"),x,y) ;
+          }
+          if (rotation == 5 * (float)Math.PI / 4) {
+            image(loadImage("tomato_plate_7.png"),x,y) ;
+          }
+          
+          imageMode(CORNER) ;
+       }
+      imageMode(CORNER) ;  
      }
   }
   
