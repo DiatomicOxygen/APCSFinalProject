@@ -17,17 +17,10 @@ public class Crate extends ProcessingTile {
     rect(x1,y1,x2-x1,y2-y1) ;
     fill(255);
     ellipse((x2+x1)/2, (y2+y1)/2, width / 20, width / 20);
-    if (type.name.equals("cabbage")) {
-      imageMode(CENTER) ;
-      image(loadImage("crate_cabbage.png"),(x2+x1)/2,(y2+y1)/2) ;
-      imageMode(CORNER) ;
-    }
-    if (type.name.equals("tomato")) {
-      imageMode(CENTER) ;
-      image(loadImage("crate_tomato.png"),(x2+x1)/2,(y2+y1)/2) ;
-      imageMode(CORNER) ;
-    }
-    else {
+    imageMode(CENTER) ;
+    image(loadImage("crate_" + type.name + ".png"),(x2+x1)/2,(y2+y1)/2) ;
+    imageMode(CORNER) ;
+    if (type == null) {
       fill(type.getColor());
       ellipse((x2+x1)/2, (y2+y1)/2, width / 30, width / 30);
     }
