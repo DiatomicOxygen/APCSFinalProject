@@ -119,10 +119,11 @@ public class Container extends Item {
     for (Ingredient a : ingredients) {
       if (i.name.equals(a.name)) return false ;
     }
-    if ((i.name.equals("cabbage")) && (!(i.isCut ))) return false ;
+    if (!(i.isCut )) return false ;
     i.setXY(x,y);
     i.radius = width / 50;
-    ingredients.add(i);
+    if (i.name.equals("cut_cabbage")) ingredients.add(0,i);
+    else ingredients.add(i);
     i.visible = false ;
     return true;
   }
