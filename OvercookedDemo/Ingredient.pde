@@ -25,19 +25,35 @@ public class Ingredient extends Item {
       }
       else if (name.equals("cut_cabbage")) {
         imageMode(CENTER) ;
-          if ((rotation == 3 * (float)Math.PI / 2) || (rotation == 1 * (float)Math.PI / 2)) {  
-            image(loadImage("cut_cabbage_0.png"),x,y) ;
-          }
-          if ((rotation == 0) || (rotation == (float)Math.PI)) {
-            image(loadImage("cut_cabbage_1.png"),x,y) ;
-          }
-          if ((rotation == 5 * (float)Math.PI / 4) || (rotation == (float)Math.PI / 4)) {
-            image(loadImage("cut_cabbage_2.png"),x,y) ;
-          }
-          if ((rotation == 7 * (float)Math.PI / 4) || (rotation == 3 * (float)Math.PI / 4)) {
-            image(loadImage("cut_cabbage_3.png"),x,y) ;
-          }
-          imageMode(CORNER) ;
+        if ((rotation == 3 * (float)Math.PI / 2) || (rotation == 1 * (float)Math.PI / 2)) {  
+          image(loadImage("cut_cabbage_0.png"),x,y) ;
+        }
+        if ((rotation == 0) || (rotation == (float)Math.PI)) {
+          image(loadImage("cut_cabbage_1.png"),x,y) ;
+        }
+        if ((rotation == 5 * (float)Math.PI / 4) || (rotation == (float)Math.PI / 4)) {
+          image(loadImage("cut_cabbage_2.png"),x,y) ;
+        }
+        if ((rotation == 7 * (float)Math.PI / 4) || (rotation == 3 * (float)Math.PI / 4)) {
+          image(loadImage("cut_cabbage_3.png"),x,y) ;
+        }
+        imageMode(CORNER) ;
+      }
+      else if (name.equals("cut_tomato")) {
+        imageMode(CENTER) ;
+        if ((rotation == 3 * (float)Math.PI / 2) || (rotation == 1 * (float)Math.PI / 2)) {  
+          image(loadImage("cut_tomato_0.png"),x,y) ;
+        }
+        if ((rotation == 0) || (rotation == (float)Math.PI)) {
+          image(loadImage("cut_tomato_1.png"),x,y) ;
+        }
+        if ((rotation == 5 * (float)Math.PI / 4) || (rotation == (float)Math.PI / 4)) {
+          image(loadImage("cut_tomato_2.png"),x,y) ;
+        }
+        if ((rotation == 7 * (float)Math.PI / 4) || (rotation == 3 * (float)Math.PI / 4)) {
+          image(loadImage("cut_tomato_3.png"),x,y) ;
+        }
+        imageMode(CORNER) ;
       }       
       else {
         stroke(0);
