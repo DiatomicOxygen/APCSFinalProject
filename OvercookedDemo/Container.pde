@@ -12,70 +12,42 @@ public class Container extends Item {
   
   void display() {
      imageMode(CENTER) ;
-     image(loadImage("plate.png"),x,y) ;
+     image(loadImage(name + ".png"),x,y) ;
      for (int i = 0; i < ingredients.size(); i++) {
-       String name = ingredients.get(i).name ;
+       String imgName = ingredients.get(i).name ;
        imageMode(CENTER) ;
-       if (name.equals("cut_cabbage")) {
-          if (rotation == 3 * (float)Math.PI / 2) {
-            image(loadImage("cabbage_plate_0.png"),x,y) ;
-          }
-          if (rotation == 7 * (float)Math.PI / 4) {
-            image(loadImage("cabbage_plate_1.png"),x,y) ;
-          }
-          if (rotation == 0) {
-            image(loadImage("cabbage_plate_2.png"),x,y) ;
-          }
-          if (rotation == 1 * (float)Math.PI / 4) {
-            image(loadImage("cabbage_plate_3.png"),x,y) ;
-          }
-          if (rotation == (float)Math.PI / 2) {
-            image(loadImage("cabbage_plate_4.png"),x,y) ;
-          }
-          if (rotation == 3 * (float)Math.PI / 4) {
-            image(loadImage("cabbage_plate_5.png"),x,y) ;
-          }
-          if (rotation == (float)Math.PI) {
-            image(loadImage("cabbage_plate_6.png"),x,y) ;
-          }
-          if (rotation == 5 * (float)Math.PI / 4) {
-            image(loadImage("cabbage_plate_7.png"),x,y) ;
-          }
-          
-          imageMode(CORNER) ;
-       }
-        if (name.equals("cut_tomato")) {
-          imageMode(CENTER) ;
-          if (rotation == 3 * (float)Math.PI / 2) {
-            image(loadImage("tomato_plate_0.png"),x,y) ;
-          }
-          if (rotation == 7 * (float)Math.PI / 4) {
-            image(loadImage("tomato_plate_1.png"),x,y) ;
-          }
-          if (rotation == 0) {
-            image(loadImage("tomato_plate_2.png"),x,y) ;
-          }
-          if (rotation == 1 * (float)Math.PI / 4) {
-            image(loadImage("tomato_plate_3.png"),x,y) ;
-          }
-          if (rotation == (float)Math.PI / 2) {
-            image(loadImage("tomato_plate_4.png"),x,y) ;
-          }
-          if (rotation == 3 * (float)Math.PI / 4) {
-            image(loadImage("tomato_plate_5.png"),x,y) ;
-          }
-          if (rotation == (float)Math.PI) {
-            image(loadImage("tomato_plate_6.png"),x,y) ;
-          }
-          if (rotation == 5 * (float)Math.PI / 4) {
-            image(loadImage("tomato_plate_7.png"),x,y) ;
-          }
-          
-          imageMode(CORNER) ;
-       }
-      imageMode(CORNER) ;  
+       imgName += "_" + name;
+        if (rotation == 3 * (float)Math.PI / 2) {
+          imgName += "_0" ;
+        }
+        if (rotation == 7 * (float)Math.PI / 4) {
+          imgName += "_1" ;
+        }
+        if (rotation == 0) {
+          imgName += "_2" ;
+        }
+        if (rotation == 1 * (float)Math.PI / 4) {
+          imgName += "_3" ;
+        }
+        if (rotation == (float)Math.PI / 2) {
+          imgName += "_4" ;
+        }
+        if (rotation == 3 * (float)Math.PI / 4) {
+          imgName += "_5" ;
+        }
+        if (rotation == (float)Math.PI) {
+          imgName += "_6" ;
+        }
+        if (rotation == 5 * (float)Math.PI / 4) {
+          imgName += "_7" ;
+        }
+        imgName += ".png";
+        image(loadImage(imgName),x,y);
+        imageMode(CORNER) ;
      }
+     imageMode(CORNER) ;  
   }
+ 
   
   
   boolean equals(Container c) { 

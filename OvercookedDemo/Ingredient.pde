@@ -13,49 +13,26 @@ public class Ingredient extends Item {
   
   void display() {
     if (visible) {
-      if (name.equals("cabbage")) {
-        imageMode(CENTER) ;
-        image(loadImage("cabbage.png"),x,y) ;
-        imageMode(CORNER) ;
-      }
-      else if (name.equals("tomato")) {
-        imageMode(CENTER) ;
-        image(loadImage("tomato.png"),x,y) ;
-        imageMode(CORNER) ;
-      }
-      else if (name.equals("cut_cabbage")) {
-        imageMode(CENTER) ;
+      String imgName = name;
+      if (isCut) {
         if ((rotation == 3 * (float)Math.PI / 2) || (rotation == 1 * (float)Math.PI / 2)) {  
-          image(loadImage("cut_cabbage_0.png"),x,y) ;
+          imgName += "_0" ;
         }
         if ((rotation == 0) || (rotation == (float)Math.PI)) {
-          image(loadImage("cut_cabbage_1.png"),x,y) ;
+          imgName += "_1" ;
         }
         if ((rotation == 5 * (float)Math.PI / 4) || (rotation == (float)Math.PI / 4)) {
-          image(loadImage("cut_cabbage_2.png"),x,y) ;
+          imgName += "_2" ;
         }
         if ((rotation == 7 * (float)Math.PI / 4) || (rotation == 3 * (float)Math.PI / 4)) {
-          image(loadImage("cut_cabbage_3.png"),x,y) ;
+          imgName += "_3" ;
         }
-        imageMode(CORNER) ;
       }
-      else if (name.equals("cut_tomato")) {
-        imageMode(CENTER) ;
-        if ((rotation == 3 * (float)Math.PI / 2) || (rotation == 1 * (float)Math.PI / 2)) {  
-          image(loadImage("cut_tomato_0.png"),x,y) ;
-        }
-        if ((rotation == 0) || (rotation == (float)Math.PI)) {
-          image(loadImage("cut_tomato_1.png"),x,y) ;
-        }
-        if ((rotation == 5 * (float)Math.PI / 4) || (rotation == (float)Math.PI / 4)) {
-          image(loadImage("cut_tomato_2.png"),x,y) ;
-        }
-        if ((rotation == 7 * (float)Math.PI / 4) || (rotation == 3 * (float)Math.PI / 4)) {
-          image(loadImage("cut_tomato_3.png"),x,y) ;
-        }
-        imageMode(CORNER) ;
-      }       
-      else {
+      imageMode(CENTER) ;
+      imgName += ".png";
+      image(loadImage(imgName),x,y);
+      imageMode(CORNER) ;     
+      if (name.equals("")) {
         stroke(0);
         fill(c);
         ellipse(x, y, radius*2, radius*2);
