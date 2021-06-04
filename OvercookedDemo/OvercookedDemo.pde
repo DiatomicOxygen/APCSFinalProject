@@ -164,7 +164,7 @@ void move() {
 }
 
 void inGameDisplay(int timeElapsed) { 
- if (!(orderAdded) && ((timeElapsed % 18) == 0) && (timeElapsed <= timer - 25)) {
+ if (!(orderAdded) && ((timeElapsed % 21) == 0) && (timeElapsed <= timer - 25)) {
     Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
     Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
     Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
@@ -177,7 +177,7 @@ void inGameDisplay(int timeElapsed) {
     orders.add(newOrder) ;
     orderAdded = true ;
   }
-  if ((timeElapsed % 25) == 3) orderAdded = false ;
+  if ((timeElapsed % 21) == 3) orderAdded = false ;
   float x = 0 ;
   Order removed = new Order(1,1,1,1,2,score) ;
   for(Order o : orders) {
