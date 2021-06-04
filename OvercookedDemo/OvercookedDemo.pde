@@ -164,7 +164,7 @@ void move() {
 }
 
 void inGameDisplay(int timeElapsed) { 
- if (!(orderAdded) && ((timeElapsed % 25) == 0) && (timeElapsed <= timer - 25)) {
+ if (!(orderAdded) && ((timeElapsed % 18) == 0) && (timeElapsed <= timer - 25)) {
     Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
     Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
     Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
