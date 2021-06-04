@@ -30,7 +30,7 @@ public class Order {
 }
 
   void reward() {
-    score[0] += (endTime - curTime);  
+    score[0] += (container.ingredients.size() + 1) * (endTime - curTime)/3;  
     endTime = 0;
     curTime = 0;
   }
