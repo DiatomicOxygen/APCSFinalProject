@@ -12,6 +12,7 @@ public class Ingredient extends Item {
   }
   
   void display() {
+    if (visible) {
       if (name.equals("cabbage")) {
         imageMode(CENTER) ;
         image(loadImage("cabbage.png"),x,y) ;
@@ -23,6 +24,7 @@ public class Ingredient extends Item {
         imageMode(CORNER) ;
       }
       else if (name.equals("cut_cabbage")) {
+        imageMode(CENTER) ;
           if ((rotation == 3 * (float)Math.PI / 2) || (rotation == 1 * (float)Math.PI / 2)) {  
             image(loadImage("cut_cabbage_0.png"),x,y) ;
           }
@@ -49,6 +51,7 @@ public class Ingredient extends Item {
         }
       }
     }
+  }
  
   
 }
