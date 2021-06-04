@@ -25,9 +25,7 @@ public class Order {
     stroke(0);
     container.setXY(x+54,y+46);
     container.display();
-    for (Item i : container.ingredients) {
-      i.display();  
-    }
+
     
 }
 

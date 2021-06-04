@@ -177,7 +177,7 @@ void inGameDisplay(int timeElapsed) {
     orders.add(newOrder) ;
     orderAdded = true ;
   }
-  if ((timeElapsed % 18) == 3) orderAdded = false ;
+  if ((timeElapsed % 25) == 3) orderAdded = false ;
   float x = 0 ;
   Order removed = new Order(1,1,1,1,2,score) ;
   for(Order o : orders) {

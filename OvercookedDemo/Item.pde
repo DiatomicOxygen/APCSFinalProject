@@ -3,12 +3,15 @@ public class Item {
   color c;
   float radius = WIDTH / 40;
   String name;
+  float rotation = 0;
+  boolean visible = true ;
   
   Item(float x, float y, color c) {
     this.x = x;
     this.y = y;
     this.c = c;
     radius = width / 45;
+    rotation = 3 * (float)Math.PI / 2 ;
   }
   
   void display() {
@@ -28,6 +31,10 @@ public class Item {
   
   boolean equals(Item b) {
      return this.name.equals(b.name); 
+  }
+  
+  void changeRotation(float rotate) {
+    rotation = rotate ;
   }
   
 }

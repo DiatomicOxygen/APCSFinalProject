@@ -17,8 +17,20 @@ public class Crate extends ProcessingTile {
     rect(x1,y1,x2-x1,y2-y1) ;
     fill(255);
     ellipse((x2+x1)/2, (y2+y1)/2, width / 20, width / 20);
-    fill(type.getColor());
-    ellipse((x2+x1)/2, (y2+y1)/2, width / 30, width / 30);
+    if (type.name.equals("cabbage")) {
+      imageMode(CENTER) ;
+      image(loadImage("crate_cabbage.png"),(x2+x1)/2,(y2+y1)/2) ;
+      imageMode(CORNER) ;
+    }
+    if (type.name.equals("tomato")) {
+      imageMode(CENTER) ;
+      image(loadImage("crate_tomato.png"),(x2+x1)/2,(y2+y1)/2) ;
+      imageMode(CORNER) ;
+    }
+    else {
+      fill(type.getColor());
+      ellipse((x2+x1)/2, (y2+y1)/2, width / 30, width / 30);
+    }
   }
   
    boolean putOn(Item a) {

@@ -11,9 +11,40 @@ public class Container extends Item {
   }
   
   void display() {
-     super.display();
+     imageMode(CENTER) ;
+     image(loadImage("plate.png"),x,y) ;
      for (int i = 0; i < ingredients.size(); i++) {
-       ingredients.get(i).setXY(x+(i-1)*3,y);  
+       String name = ingredients.get(i).name ;
+       if (name.equals("cut_cabbage")) {
+          if (rotation == 3 * (float)Math.PI / 2) {
+            image(loadImage("cabbage_plate_0.png"),x,y) ;
+          }
+          if (rotation == 7 * (float)Math.PI / 4) {
+            image(loadImage("cabbage_plate_1.png"),x,y) ;
+          }
+          if (rotation == 0) {
+            image(loadImage("cabbage_plate_2.png"),x,y) ;
+          }
+          if (rotation == 1 * (float)Math.PI / 4) {
+            image(loadImage("cabbage_plate_3.png"),x,y) ;
+          }
+          if (rotation == (float)Math.PI / 2) {
+            image(loadImage("cabbage_plate_4.png"),x,y) ;
+          }
+          if (rotation == 3 * (float)Math.PI / 4) {
+            image(loadImage("cabbage_plate_5.png"),x,y) ;
+          }
+          if (rotation == (float)Math.PI) {
+            image(loadImage("cabbage_plate_6.png"),x,y) ;
+          }
+          if (rotation == 5 * (float)Math.PI / 4) {
+            image(loadImage("cabbage_plate_7.png"),x,y) ;
+          }
+          
+          imageMode(CORNER) ;
+       }
+
+        
      }
   }
   
@@ -63,6 +94,7 @@ public class Container extends Item {
     i.setXY(x,y);
     i.radius = width / 50;
     ingredients.add(i);
+    i.visible = false ;
     return true;
   }
 }

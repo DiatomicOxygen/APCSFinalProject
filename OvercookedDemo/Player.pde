@@ -37,6 +37,7 @@ public class Player {
     ellipse(x, y, radius*1.3, radius*1.3);
     if (inHand != null) {
        inHand.setXY(x + cos(direction) * radius, y + sin(direction) * radius); 
+       inHand.changeRotation(direction) ;
     }
     if (busy > 0) {
       fill(255) ;
