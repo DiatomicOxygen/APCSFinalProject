@@ -101,3 +101,10 @@ Edward:
 - game states added in different display methods
   - split into gameOverDisplay and inGameDisplay
   - created gameOverDisplay
+
+6/3/21
+Edward:
+- Fixed a bug with orders being spammed at a certain time
+- made difficulty a bit easier (orders every 21s instead of 18s)
+- created UML V2 on google Docs
+- created presentationDemo branch for presentation
