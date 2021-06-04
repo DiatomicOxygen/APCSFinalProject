@@ -19,7 +19,6 @@ boolean wPressed = false;
 boolean aPressed = false; 
 boolean sPressed = false; 
 boolean dPressed = false; 
-int actionStart = (hour()) * 3600 + (minute()) * 60 + (second()) ;
 int activePlayer = 0 ;
 
 
