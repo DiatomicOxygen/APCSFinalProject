@@ -113,3 +113,7 @@ Jesse:
 - Added images for tomatoes and cabbages (on crate, uncut, cut, on plate)
 - Fixed other bugs
 
+6/4/21
+Edward:
+- made images for Ingredients, Containers, and Crates easier to implement
+- adjusted Order to reward harder orders more 
