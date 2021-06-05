@@ -45,7 +45,7 @@ public class Stove extends ProcessingTile {
   }
   
   void process() {
-    if (pan != null) {
+    if (pan != null && pan.ingredients.size() > 0) {
       cooking--;
       if (cooking == 0) {
         for (Ingredient i : pan.ingredients) {
