@@ -17,7 +17,7 @@ public class CuttingBoard extends ProcessingTile {
   }
   
   boolean putOn(Item a) {
-    if (a.name != "plate") {
+    if (! (a.name.equals("plate") || a.name.equals("pan") || a.name.equals("dirty_plate"))) {
       return putIngredientOn((Ingredient) a) ;
     }
     return false ;
