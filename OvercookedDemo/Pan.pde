@@ -59,6 +59,8 @@ public class Pan extends Container {
   
   boolean putOn(Ingredient i) {
     if (!(i.isCookable)) return false ;
+    ingredients.add(i);
+    ingredient = i;
     i.setXY(x,y);
     i.radius = width / 50;
     i.visible = false ;
