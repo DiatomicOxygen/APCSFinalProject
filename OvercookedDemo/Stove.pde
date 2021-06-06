@@ -16,16 +16,6 @@ public class Stove extends ProcessingTile {
     for (int i = 0; i < 8; i++) {
       ellipse((x1+x2)/2 + 10 * cos(i * PI / 4), (y1+y2)/2 + 10 * sin(i * PI / 4), 5,9);
     }
-    if (pan != null && pan.ingredients.size() > 0 && cooking > 0) {
-      fill(255) ;
-      float x = (x1 + x2) / 2;
-      float y = (y1 + y2) / 2 - 8;
-      rect(x+25,y-25,50,-10) ;
-      colorMode(HSB,359,100,100) ;
-      color c = color(100 - 100 * (cooking)/180-10,90,90) ;
-      fill(c) ;
-      rect(x+27,y-27,46*((float)(180 - cooking)/180),-6) ;
-    }
     if (cooking < 0) {
       fill(255,0,0,95);
       ellipse((x1+x2)/2, y1 - 24, 8, 20);
