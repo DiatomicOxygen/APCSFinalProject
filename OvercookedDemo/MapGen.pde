@@ -64,10 +64,10 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     //if (i == 3) {
     //  ProcessingTile stove = new Stove(117.5,y1,182.5,y2);
     //  tiles.add(stove);
-    //  //Container pan = new Container(0,0,140, "pan");
-    //  //containers.add(pan);
-    //  //items.add(pan);
-    //  //stove.putOn(pan);
+    //  Container pan = new Pan(0,0,140, "pan");
+    //  containers.add(pan);
+    //  items.add(pan);
+    //  stove.putOn(pan);
     //}
     if ((i != 6) && (i != 5)) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;
     if (i != 6) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;

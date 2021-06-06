@@ -16,6 +16,11 @@ public class Stove extends ProcessingTile {
     for (int i = 0; i < 8; i++) {
       ellipse((x1+x2)/2 + 10 * cos(i * PI / 4), (y1+y2)/2 + 10 * sin(i * PI / 4), 5,9);
     }
+    if (cooking < 0) {
+      fill(255,0,0,95);
+      ellipse((x1+x2)/2, y1 - 24, 8, 20);
+      ellipse((x1+x2)/2, y1 - 8, 8, 8);
+    }
     if (onFire) {
       fill(255,0,0);
       ellipse((x1+x2)/2, (y1+y2)/2 + 10, (x1-x2)/1.5 ,(y1-y2)/1.5 );  
@@ -45,7 +50,7 @@ public class Stove extends ProcessingTile {
   }
   
   void process() {
-    if (pan != null) {
+    if (pan != null && pan.ingredients.size() > 0) {
       cooking--;
       if (cooking == 0) {
         for (Ingredient i : pan.ingredients) {

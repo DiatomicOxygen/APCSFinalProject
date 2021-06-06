@@ -81,8 +81,11 @@ public class Container extends Item {
   }  
   
   boolean putOn(Item i) {
-    if (ingredients.size() == 3 || i.name == null || i.name.equals("pot") || i.name.equals("pan") || i.name.equals("plate") || i.name.equals("dirty_plate") || this.name.equals("dirty_plate")) {
+    if (ingredients.size() == 3 || i.name == null || i.name.equals("pot")  || i.name.equals("plate") || i.name.equals("dirty_plate") || this.name.equals("dirty_plate")) {
       return false; 
+    }
+    if (i.name.equals("pan")) {
+      return putOn((Pan) i);
     }
     return putOn((Ingredient) i) ;
   }
@@ -91,12 +94,21 @@ public class Container extends Item {
     for (Ingredient a : ingredients) {
       if (i.name.equals(a.name)) return false ;
     }
-    if (!(i.isCut )) return false ;
+    if (!(i.isCut)) return false ;
+    if (i.isCookable) return false ;
     i.setXY(x,y);
     i.radius = width / 50;
     if (i.name.equals("cut_cabbage")) ingredients.add(0,i);
     else ingredients.add(i);
     i.visible = false ;
+    return true;
+  }
+  
+  boolean putOn(Pan i) {
+    if (!putOn(i.ingredient)) {
+      return false;  
+    }
+    i.ingredient = null;
     return true;
   }
 }

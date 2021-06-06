@@ -1,14 +1,13 @@
 public class Ingredient extends Item {
  
   //PImage img TO BE IMPLEMENTED
-  boolean isCuttable, isCookable, isCut ;
+  boolean isCuttable, isCookable, isCut, isCooked ;
   
   Ingredient(float x, float y, color c, String name, boolean isCuttable, boolean isCookable) {
     super(x,y,c);
     this.name = name;
     this.isCuttable = isCuttable ;
     this.isCookable = isCookable ;
-    isCut = false ;
   }
   
   void display() {
