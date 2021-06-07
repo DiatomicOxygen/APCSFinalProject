@@ -121,3 +121,9 @@ Edward:
 6/5/21
 Edward:
 - stove class created (to be used later)
+
+6/6/21
+Edward:
+- pan class created
+- container class updated to accept cooked foods from pans
+- stove now displays progress cooking
