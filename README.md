@@ -116,4 +116,8 @@ Jesse:
 6/4/21
 Edward:
 - made images for Ingredients, Containers, and Crates easier to implement
-- adjusted Order to reward harder orders more 
+- adjusted Order to reward harder orders more
+
+6/5/21
+Edward:
+- stove class created (to be used later)
