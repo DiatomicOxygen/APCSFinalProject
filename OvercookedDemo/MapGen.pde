@@ -1,4 +1,11 @@
 void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Container> containers, ArrayList<Order> orders) {
+  hours = hour() ;
+  minutes = minute() ;
+  seconds = second() ;
+  activePlayer = 1 ;
+  P1 = new Player(400, 400, WIDTH,#95D3EA);
+  P2 = new Player(800, 400, WIDTH,#ED6C6C);
+  P1.active = true ;
   //wall generation
   Tile a = new Wall(70,0,100,1080,150) ;
   Tile b = new Wall(70,0,670,1080,720) ;

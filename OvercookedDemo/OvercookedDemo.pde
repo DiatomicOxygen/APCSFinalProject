@@ -3,8 +3,6 @@ ArrayList<Item> items = new ArrayList<Item>();
 ArrayList<Container> containers = new ArrayList<Container>();
 ArrayList<ProcessingTile> pTiles = new ArrayList<ProcessingTile>();
 ArrayList<Order> orders = new ArrayList<Order>();
-CuttingBoard P1CuttingBoard = new CuttingBoard(0,0,0,0,0) ;
-CuttingBoard P2CuttingBoard = new CuttingBoard(0,0,0,0,0) ;
 float WIDTH = 1080;
 float HEIGHT = 720;
 int hours = 0 ;
@@ -12,83 +10,92 @@ int minutes = 0 ;
 int seconds = 0 ;
 int timer = 300 ;
 int[] score = new int[1]; 
-Player P1 = new Player(400, 400, WIDTH,#95D3EA);
-Player P2 = new Player(800, 400, WIDTH,#ED6C6C);
+Player P1 ;
+Player P2 ;
 boolean orderAdded = false ;
 boolean wPressed = false; 
 boolean aPressed = false; 
 boolean sPressed = false; 
 boolean dPressed = false; 
 int activePlayer = 0 ;
-
+int screen = -1 ;
 
 void setup() {
   frameRate(30);
   size(1080,720) ;
-  demo(tiles, pTiles,containers, orders) ;
-  hours = hour() ;
-  minutes = minute() ;
-  seconds = second() ;
-  activePlayer = 1 ;
-  P1.active = true ;
 }
 
 void draw() {
-  background(230) ; 
-  int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
-  if (timer - timeElapsed < 0) timeElapsed = timer ;
-  inGameDisplay(timeElapsed);
-  if (timer == timeElapsed) {
-    gameOverDisplay();  
+  if (screen == -1) {
+    background(#54649D) ; 
+    fill(0) ;
+    textSize(50) ;
+    text("OVERPROCESSED",350,200) ;
+    if ((second() % 5) == 0) fill(125) ;
+    text("PRESS SPACE TO START",270,500) ;
+  }
+  if (screen != -1) {
+    background(230) ; 
+    int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
+    if (timer - timeElapsed < 0) timeElapsed = timer ;
+    inGameDisplay(timeElapsed);
+    if (timer == timeElapsed) {
+      gameOverDisplay();  
+    }
   }
 } 
   
 
 void keyPressed() {
-  if (key == 'r') {
-    println(activePlayer) ;
-    boolean changed = false ;
-    if ((activePlayer == 1) && ! changed) {
-       activePlayer = 2 ;
-       P1.active = false ;
-       P2.active = true ;
-       changed = true ;
+  if ((screen == -1) && (key == ' ')) {
+    screen = 1 ;
+    demo(tiles, pTiles,containers, orders) ;
+  }
+  if (screen != -1) {
+    if (key == 'r') {
+      println(activePlayer) ;
+      boolean changed = false ;
+      if ((activePlayer == 1) && ! changed) {
+         activePlayer = 2 ;
+         P1.active = false ;
+         P2.active = true ;
+         changed = true ;
+      }
+      if ((activePlayer == 2) && ! changed) {
+         activePlayer = 1 ;
+         P2.active = false ;
+         P1.active = true ;
+         changed = true ;
+      }
     }
-    if ((activePlayer == 2) && ! changed) {
-       activePlayer = 1 ;
-       P2.active = false ;
-       P1.active = true ;
-       changed = true ;
+    Player p = P1 ;
+    if (activePlayer == 2) {
+      p = P2 ;
+    }
+    if (key == 'q') {
+      p.interact(pTiles, items); 
+    }
+    if (key == 'e') {
+      p.pickUpDrop(tiles, items, containers);
+    }
+    if (key == ' ') {
+      if (p.dashing < -50) {
+        p.dashing = 10;  
+      }
+    }
+    if (key == 'w') {
+      wPressed = true ;
+    }
+    else if (key == 'a') {
+      aPressed = true ;
+    }
+    else if (key == 's') {
+      sPressed = true ;
+    }
+    else if (key == 'd') {
+      dPressed = true ;
     }
   }
-  Player p = P1 ;
-  if (activePlayer == 2) {
-    p = P2 ;
-  }
-  if (key == 'q') {
-    p.interact(pTiles, items); 
-  }
-  if (key == 'e') {
-    p.pickUpDrop(tiles, items, containers);
-  }
-  if (key == ' ') {
-    if (p.dashing < -50) {
-      p.dashing = 10;  
-    }
-  }
-  if (key == 'w') {
-    wPressed = true ;
-  }
-  else if (key == 'a') {
-    aPressed = true ;
-  }
-  else if (key == 's') {
-    sPressed = true ;
-  }
-  else if (key == 'd') {
-    dPressed = true ;
-  }
-  
 }
 
 void keyReleased() {
