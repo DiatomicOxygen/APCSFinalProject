@@ -28,10 +28,10 @@ void setup() {
 void draw() {
   if (screen == -1) {
     background(#54649D) ; 
+    image(loadImage("Logo.png"),0,0) ;
     fill(0) ;
     textSize(50) ;
-    text("OVERPROCESSED",350,200) ;
-    if ((second() % 5) == 0) fill(125) ;
+    if (((second() % 5) == 0) || ((second() % 5) == 1)) fill(255) ;
     text("PRESS SPACE TO START",270,500) ;
   }
   if (screen != -1) {

@@ -2,7 +2,7 @@ public class Player {
   float x, y;
   float radius;
   Item inHand;
-  float direction = 0;
+  float direction = 3 * (float)Math.PI / 2;
   boolean colliding;
   int busy;
   int dashing; 
