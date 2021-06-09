@@ -127,3 +127,15 @@ Edward:
 - pan class created
 - container class updated to accept cooked foods from pans
 - stove now displays progress cooking
+
+6/7/21
+Jesse:
+- Added menu/start screen
+- Added fancy logo for menu/start screen
+
+6/9/21
+Jesse: 
+- Edited order tab visuals
+- Added coin/score icon
+
+

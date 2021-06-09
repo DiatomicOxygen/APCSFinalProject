@@ -35,7 +35,7 @@ void draw() {
     text("PRESS SPACE TO START",270,500) ;
   }
   if (screen != -1) {
-    background(230) ; 
+    background(130) ; 
     int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
     if (timer - timeElapsed < 0) timeElapsed = timer ;
     inGameDisplay(timeElapsed);
@@ -170,6 +170,8 @@ void move() {
 }
 
 void inGameDisplay(int timeElapsed) { 
+ fill(#B2CED6) ;
+ rect(0,0,1080,100) ;
  if (!(orderAdded) && ((timeElapsed % 21) == 0) && (timeElapsed <= timer - 25)) {
     Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
     Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
@@ -188,7 +190,7 @@ void inGameDisplay(int timeElapsed) {
   Order removed = new Order(1,1,1,1,2,score) ;
   for(Order o : orders) {
     o.curTime = timeElapsed ; 
-    o.display(20 + x*108, 10) ;
+    o.display(20 * (x+1) + x*108, 10) ;
     if (o.curTime >= o.endTime) {
       removed = o ;
     }
@@ -204,8 +206,12 @@ void inGameDisplay(int timeElapsed) {
     if ((timer - timeElapsed)%60 == 10) text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
     else text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
   }
-  fill(0);
-  text("Score: " + score[0],700,65) ;
+  textSize(50);
+  fill(255);
+  image(loadImage("coin.png"),770,0) ;   
+  textAlign(CENTER) ;
+  text(score[0],822,67) ;
+  textAlign(LEFT) ;
   for(Tile t : tiles) {
     t.display() ;
   }
@@ -226,15 +232,15 @@ void gameOverDisplay() {
     color c1 = 230;
     color c2 = 230;
     color c3 = 230;
-    if (score[0] >= 50) {
+    if (score[0] >= 70) {
       c1 = color(#FFFF00);
       endText = "An apprentice's skill!";
     }
-    if (score[0] >= 100) {
+    if (score[0] >= 140) {
       c2 = color(#FFFF00);
       endText = "Not bad for a beginner!";
     }
-    if (score[0] >= 150) {
+    if (score[0] >= 200) {
       c3 = color(#FFFF00);
       endText = "Culinary genius!";
     }
