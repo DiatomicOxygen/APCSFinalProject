@@ -47,6 +47,9 @@ public class CuttingBoard extends ProcessingTile {
       onTop.isCut = true ;
       onTop.isCuttable = false ;
       onTop.name = "cut_" + onTop.name ;
+      if (onTop.name.equals("cut_meat")) {
+        onTop.isCookable = true;  
+      }
     }
     
   }
