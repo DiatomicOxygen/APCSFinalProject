@@ -33,8 +33,13 @@ public class Stove extends ProcessingTile {
       ellipse((x1+x2)/2, y1 - 8, 8, 8);
     }
     if (onFire) {
-      fill(255,0,0);
-      ellipse((x1+x2)/2, (y1+y2)/2 + 10, (x1-x2)/1.5 ,(y1-y2)/1.5 );  
+      imageMode(CENTER) ;
+      if (cooking % 10 < -5) {
+        image(loadImage("fire_1.png"),(x1+x2)/2,(y1+y2)/2 - 30);
+      } else {
+        image(loadImage("fire_2.png"),(x1+x2)/2,(y1+y2)/2 - 30);
+      }
+      imageMode(CORNER) ;
     }
     process();
   }
@@ -53,14 +58,14 @@ public class Stove extends ProcessingTile {
   }
   
   Item retrieve() {
-    if (onFire) {
-      return null;  
+    if (!onFire) {
+      cooking = 0;
+      Container temp = pan;
+      pan = null;
+      empty = true;
+      return temp;
     }
-    cooking = 0;
-    Container temp = pan;
-    pan = null;
-    empty = true;
-    return temp;
+    return null;
   }
   
   void process() {
