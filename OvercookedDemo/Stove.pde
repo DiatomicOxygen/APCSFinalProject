@@ -41,7 +41,9 @@ public class Stove extends ProcessingTile {
   
    boolean putOn(Item a) {
     if (a.name.equals("pan") && !onFire && empty) {
-      pan = (Container)a;
+      Container c = (Container)a;
+      if(c.ingredients.size() > 0 && ! c.ingredients.get(0).isCookable) return false;
+      pan = c;
       empty = false ;
       pan.setXY((x2-x1)/2+x1,(y2-y1)/2+y1) ;
       cooking = 180;
@@ -74,6 +76,7 @@ public class Stove extends ProcessingTile {
         onFire = true;
         for (Ingredient i : pan.ingredients) {
          i.name = "burnt";
+         i.rotation = 3 * (float)Math.PI / 2;
          i.c = 0;
          i.isCut = false;
         }
