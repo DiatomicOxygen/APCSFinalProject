@@ -25,8 +25,9 @@ public class Stove extends ProcessingTile {
       color c = color(100 - 100 * (cooking)/180-10,90,90) ;
       fill(c) ;
       rect(x+27,y-27,46*((float)(180 - cooking)/180),-6) ;
+      colorMode(RGB,255,255,255);
     }
-    if (cooking < 0) {
+    if (cooking < -60) {
       fill(255,0,0,95);
       ellipse((x1+x2)/2, y1 - 24, 8, 20);
       ellipse((x1+x2)/2, y1 - 8, 8, 8);
@@ -53,6 +54,7 @@ public class Stove extends ProcessingTile {
     if (onFire) {
       return null;  
     }
+    cooking = 0;
     Item temp = pan;
     pan = null;
     empty = true;
@@ -67,7 +69,7 @@ public class Stove extends ProcessingTile {
           i.name = "cooked_" + i.name;
         }
       }
-      if (cooking == -90) {
+      if (cooking == -210) {
         onFire = true;
         for (Ingredient i : pan.ingredients) {
          i.name = "burnt";
