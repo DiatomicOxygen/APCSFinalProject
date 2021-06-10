@@ -65,7 +65,7 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     color tan = color(#D3BC91) ;
     float y1 = 215+(65*(i-1));
     float y2 = 215+(65*i);
-    tiles.add(new Tile(tan,117.5,y1,182.5,y2)) ;
+    //tiles.add(new Tile(tan,117.5,y1,182.5,y2)) ;
     if (i != 3) {
       tiles.add(new Tile(tan,117.5,y1,182.5,y2));
     }

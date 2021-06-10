@@ -16,7 +16,7 @@ public class Stove extends ProcessingTile {
     for (int i = 0; i < 8; i++) {
       ellipse((x1+x2)/2 + 10 * cos(i * PI / 4), (y1+y2)/2 + 10 * sin(i * PI / 4), 5,9);
     }
-    if (pan != null && pan.ingredients.size() > 0 && cooking > 0) {
+    if (pan != null && pan.ingredients.size() > 0 && cooking >= 0) {
       fill(255) ;
       float x = (x1 + x2) / 2;
       float y = (y1 + y2) / 2 - 8;
@@ -40,7 +40,7 @@ public class Stove extends ProcessingTile {
   }
   
    boolean putOn(Item a) {
-    if (a.name.equals("pan") && !onFire) {
+    if (a.name.equals("pan") && !onFire && empty) {
       pan = (Container)a;
       empty = false ;
       pan.setXY((x2-x1)/2+x1,(y2-y1)/2+y1) ;
@@ -55,7 +55,7 @@ public class Stove extends ProcessingTile {
       return null;  
     }
     cooking = 0;
-    Item temp = pan;
+    Container temp = pan;
     pan = null;
     empty = true;
     return temp;
