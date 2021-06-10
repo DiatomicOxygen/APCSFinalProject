@@ -20,6 +20,8 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
   Ingredient cabbage = new Ingredient(0,0,color(#59E84F), "cabbage",true,false) ;
   Ingredient tomato = new Ingredient(0,0,color(255,0,0), "tomato",true,false) ;
   Ingredient meat = new Ingredient(0,0,color(255,0,0), "meat",true,false) ;
+  Ingredient fireExt = new Ingredient(0,0,color(255,0,0), "fire_extinguisher",false,false) ;
+  items.add(fireExt);
   //tile generation
  
   for(int i=1; i<=13; i++) {
@@ -67,7 +69,11 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     float y2 = 215+(65*i);
     //tiles.add(new Tile(tan,117.5,y1,182.5,y2)) ;
     if (i != 3) {
-      tiles.add(new Tile(tan,117.5,y1,182.5,y2));
+      Tile t = new Tile(tan,117.5,y1,182.5,y2);
+      tiles.add(t);
+      if (i == 1) {
+        t.putOn(fireExt);  
+      }
     }
     if (i == 3) {
       ProcessingTile stove = new Stove(117.5,y1,182.5,y2);

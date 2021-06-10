@@ -4,6 +4,7 @@ public class Tile {
   color c ;
   Item i ;
   boolean empty ;
+  boolean onFire = false;
   
   Tile(color c, float x1,float y1,float x2,float y2) {
     this.c = c ;
@@ -33,9 +34,12 @@ public class Tile {
   }
   
   Item retrieve() {
-    Item temp = i;
-    i = null;
-    empty = true;
-    return temp;
+    if (!empty) {
+      Item temp = i;
+      i = null;
+      empty = true;
+      return temp;
+    } 
+    return null;
   }
 }

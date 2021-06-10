@@ -140,7 +140,15 @@ public class Player {
        float yInFront = y + sin(direction)*55 ;
        if ((pT.x1 < xInFront) && (pT.x2 > xInFront) && (pT.y1 < yInFront) && (pT.y2 > yInFront)) {
           pT.process(items,this); 
-          
+       }
+     }
+     if (inHand != null && inHand.name.equals("fire_extinguisher")) {
+       float xInFront = x + cos(direction)*45 ;
+       float yInFront = y + sin(direction)*45 ;
+       for(Tile t : tiles) {
+         if ((t.x1 < xInFront) && (t.x2 > xInFront) && (t.y1 < yInFront) && (t.y2 > yInFront)) {
+            t.onFire = false; 
+         }
        }
      }
    }

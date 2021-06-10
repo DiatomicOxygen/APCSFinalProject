@@ -21,8 +21,10 @@ public class DishDispenser extends Tile {
     stroke(0);
     fill(c) ;
     rect(x1,y1,x2-x1,y2-y1) ;
-    fill(255);
-    ellipse((x2+x1)/2, (y2+y1)/2, width / 20, width / 20);
+    if (limit > 0) {
+      fill(255);
+      ellipse((x2+x1)/2, (y2+y1)/2, width / 20, width / 20);
+    }
   }
   
    boolean putOn(Item a) {
