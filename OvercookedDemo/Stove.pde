@@ -58,34 +58,31 @@ public class Stove extends ProcessingTile {
   }
   
   Item retrieve() {
-    if (!onFire) {
-      cooking = 0;
-      Container temp = pan;
-      pan = null;
-      empty = true;
-      return temp;
-    } else {
+    if (onFire) { 
       return null;
-    }
+    } 
+    cooking = 0;
+    Container temp = pan;
+    pan = null;
+    empty = true;
+    return temp;
   }
   
   void process() {
     if (pan != null && pan.ingredients.size() > 0) {
       cooking--;
       if (cooking == 0) {
-        for (Ingredient i : pan.ingredients) {
-          i.name = "cooked_" + i.name;
-          i.isCookable = false;
-        }
+        Ingredient i = pan.ingredients.get(0);
+        i.name = "cooked_" + i.name;
+        i.isCookable = false;
       }
       if (cooking == -210) {
         onFire = true;
-        for (Ingredient i : pan.ingredients) {
-         i.name = "burnt";
-         i.rotation = 3 * (float)Math.PI / 2;
-         i.c = 0;
-         i.isCut = false;
-        }
+        Ingredient i = pan.ingredients.get(0);
+        i.name = "burnt";
+        i.rotation = 3 * (float)Math.PI / 2;
+        i.c = 0;
+        i.isCut = false;
       }
     }
   }

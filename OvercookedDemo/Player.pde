@@ -117,6 +117,8 @@ public class Player {
               inHand = t.retrieve();
               if (inHand != null) {
                 return true;
+              } else {
+                return false; 
               }
             }
          }
