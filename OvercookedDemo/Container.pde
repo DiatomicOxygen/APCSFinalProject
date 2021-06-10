@@ -85,7 +85,7 @@ public class Container extends Item {
       return false; 
     }
     if (i.name.equals("pan")) {
-      return putOn((Pan) i);
+      return putOn((Pan)(Container) i);
     }
     return putOn((Ingredient) i) ;
   }
@@ -105,10 +105,10 @@ public class Container extends Item {
   }
   
   boolean putOn(Pan i) {
-    if (!putOn(i.ingredient)) {
-      return false;  
+    if (i.ingredients.size() > 0 && putOn((Ingredient)i.ingredients.get(0))) {
+       i.ingredients.remove(0);
+       return false;   
     }
-    i.ingredient = null;
-    return true;
+    return false;
   }
 }

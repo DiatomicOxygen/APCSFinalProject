@@ -1,6 +1,4 @@
 public class Pan extends Container {
- 
-  Ingredient ingredient;
   
   Pan(float x, float y, color c, String name) {
     super(x,y,c,name);
@@ -10,8 +8,8 @@ public class Pan extends Container {
   void display() {
      imageMode(CENTER) ;
      image(loadImage(name + ".png"),x,y) ;
-     if (ingredient != null) {
-       String imgName = ingredient.name ;
+     if (ingredients.size() > 0 && ingredients.get(0) != null) {
+       String imgName = ingredients.get(0).name ;
        imageMode(CENTER) ;
        imgName += "_container";
        if (rotation == 3 * (float)Math.PI / 2) {
@@ -51,7 +49,7 @@ public class Pan extends Container {
   }
   
   boolean putOn(Item i) {
-    if (ingredient != null || i.name == null || i.name.equals("pot")  || i.name.equals("plate") || i.name.equals("pan") || i.name.equals("dirty_plate")) {
+    if (ingredients.size() > 0 || i.name == null || i.name.equals("pot")  || i.name.equals("plate") || i.name.equals("pan") || i.name.equals("dirty_plate")) {
       return false; 
     }
     return putOn((Ingredient) i) ;
@@ -60,7 +58,6 @@ public class Pan extends Container {
   boolean putOn(Ingredient i) {
     if (!(i.isCookable)) return false ;
     ingredients.add(i);
-    ingredient = i;
     i.setXY(x,y);
     i.radius = width / 50;
     i.visible = false ;

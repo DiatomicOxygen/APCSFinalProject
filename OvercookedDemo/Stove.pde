@@ -67,6 +67,7 @@ public class Stove extends ProcessingTile {
       if (cooking == 0) {
         for (Ingredient i : pan.ingredients) {
           i.name = "cooked_" + i.name;
+          i.isCookable = false;
         }
       }
       if (cooking == -210) {
