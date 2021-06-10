@@ -19,6 +19,7 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
   tiles.add(d) ;
   Ingredient cabbage = new Ingredient(0,0,color(#59E84F), "cabbage",true,false) ;
   Ingredient tomato = new Ingredient(0,0,color(255,0,0), "tomato",true,false) ;
+  Ingredient meat = new Ingredient(0,0,color(255,0,0), "meat",true,true) ;
   //tile generation
  
   for(int i=1; i<=13; i++) {
@@ -78,12 +79,17 @@ void demo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Con
     //}
     if ((i != 6) && (i != 5)) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;
     if (i != 6) tiles.add(new Tile(tan,507.5,y1,572.5,y2)) ;
-    if (i != 4 && i != 5) { 
+    if (i != 4 && i != 5 && i != 2) { 
       tiles.add(new Tile(tan,897.5,y1,962.5,y2));
     }
     if (i == 4) {
       Counter counter = new Counter(897.5,y1,962.5,y2 + 65, containers, items, orders);
       tiles.add(counter);
+    }
+    if (i == 2) {
+      ProcessingTile crate = new Crate(meat,color(#746B49),897.5,y1,962.5,y2);
+      pTiles.add(crate);
+      tiles.add(crate);
     }
   }
 }

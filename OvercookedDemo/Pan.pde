@@ -13,7 +13,7 @@ public class Pan extends Container {
      if (ingredient != null) {
        String imgName = ingredient.name ;
        imageMode(CENTER) ;
-       imgName += "_" + name;
+       imgName += "_container";
        if (rotation == 3 * (float)Math.PI / 2) {
          imgName += "_0" ;
        }

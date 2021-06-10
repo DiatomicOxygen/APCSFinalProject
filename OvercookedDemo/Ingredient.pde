@@ -41,7 +41,7 @@ public class Ingredient extends Item {
           line(x-radius/1.4142,y-radius/1.4142,x-radius/1.4142,y+radius/1.4142) ;
           line(x+radius/1.4142,y-radius/1.4142,x+radius/1.4142,y+radius/1.4142) ;
         }
-      }
+      }   
     }
   }
  
