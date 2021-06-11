@@ -36,6 +36,9 @@ void draw() {
     textSize(50) ;
     if (((second() % 5) == 0) || ((second() % 5) == 1)) fill(255) ;
     text("PRESS SPACE TO START",270,500) ;
+    textSize(25) ;
+    fill(0);
+    text("By: Edward Oo and Jessie Xie, Pd 4",25,700) ;
   }
   if (screen == 0) {
     background(#54649D) ;   
