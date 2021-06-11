@@ -194,7 +194,12 @@ Jesse:
 - Began working on new and improved score screen
 
 6/11/21
+Edward:
 - made 3rd and final UML (on google docs)
   - added pan class to UML
   - moved private variables from Map into Main
   - renamed Map to MapGen
+- updated level select screen
+- fixed a bug where score is not cleared after a game
+- fixed a bug where player could take items from far away
+- decreased difficulty on map 2
