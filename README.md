@@ -188,8 +188,13 @@ Edward:
 - fixed a bug where levels would overlap
   - also sorry I procrastinated a little, I had 2 APs, a math test, and 2 other projects!
 
-Jesse: 
+Jesse:
 - Added a visual when time is up
 - Made changes to how score screen pops up
 - Began working on new and improved score screen
 
+6/11/21
+- made 3rd and final UML (on google docs)
+  - added pan class to UML
+  - moved private variables from Map into Main
+  - renamed Map to MapGen
