@@ -19,6 +19,9 @@ boolean sPressed = false;
 boolean dPressed = false; 
 int activePlayer = 0 ;
 int screen = -1 ;
+int selected = 0;
+boolean hardMode = false;
+boolean gameOver = false;
 
 void setup() {
   frameRate(30);
@@ -34,13 +37,44 @@ void draw() {
     if (((second() % 5) == 0) || ((second() % 5) == 1)) fill(255) ;
     text("PRESS SPACE TO START",270,500) ;
   }
-  if (screen != -1) {
+  if (screen == 0) {
+    background(#54649D) ;   
+    textSize(50) ;
+    fill(0);
+    text("SELECT A LEVEL",370,200) ;
+    stroke(0);
+    if (selected == 0) {
+      fill(#ADD8E6);   
+    } else {
+      fill(#54649D);
+    }
+    rect(1080/4 - 100, 720/3, 1080/4, 720/3);
+    if (selected == 1) {
+      fill(#ADD8E6);   
+    } else {
+      fill(#54649D);
+    }
+    rect(1080/2 + 100, 720/3, 1080/4, 720/3);
+    if (hardMode) {
+      fill(#ADD8E6);   
+    } else {
+      fill(#54649D);
+    }
+    rect(1080/2 + 100, 5 * 720/6, 400, 100);
+    fill(0);
+    text("1",1080/4 + 25,720/2) ;
+    text("2",1080/2 + 225,720/2) ;
+    text("HARDMODE",1080/2 + 125,5 * 720/6 + 65) ;
+
+  }
+  if (screen > 0) {
     background(130) ; 
     int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
     if (timer - timeElapsed < 0) timeElapsed = timer ;
     inGameDisplay(timeElapsed);
     if (timer == timeElapsed) {
       gameOverDisplay();  
+      gameOver = true;
     }
   }
 } 
@@ -48,10 +82,20 @@ void draw() {
 
 void keyPressed() {
   if ((screen == -1) && (key == ' ')) {
-    screen = 1 ;
-    demo(tiles, pTiles,containers, orders) ;
+    screen = 0 ;
+    key = 'z';
   }
-  if (screen != -1) {
+  if (screen == 0 && key == ' ') {
+    screen += selected + 1; 
+    timer = 300;
+    if (screen == 1) {
+      mapOne(tiles, pTiles, containers, orders, hardMode);  
+    } else {
+      mapTwo(tiles, pTiles, containers, orders, hardMode);
+    }
+    key = 'z';
+  }
+  if (screen > 0) {
     if (key == 'r') {
       println(activePlayer) ;
       boolean changed = false ;
@@ -81,6 +125,10 @@ void keyPressed() {
     if (key == ' ') {
       if (p.dashing < -50) {
         p.dashing = 10;  
+      }
+      if (gameOver) {
+        screen = 0;  
+        gameOver = false;
       }
     }
     if (key == 'w') {
@@ -112,6 +160,20 @@ void keyReleased() {
     dPressed = false ;
   }
   
+}
+
+void mousePressed() { 
+  if (screen == 0) {
+    if (mouseX > 1080/4 - 100 && mouseX < 1080/2 - 100 && mouseY > 720/3 && mouseY < 1440/3 ) {
+      selected = 0;  
+    }
+    if (mouseX > 1080/2 + 100 && mouseX < 3*1080/4 + 100 && mouseY > 720/3 && mouseY < 1440/3 ) {
+      selected = 1;  
+    }
+    if (mouseX > 1080/2 + 100 && mouseX < 1080/2 + 500 && mouseY > 5 * 720/6 && mouseY < 5 * 720/6 + 100) {
+      hardMode = !hardMode;  
+    }
+  }
 }
 
 void move() {
