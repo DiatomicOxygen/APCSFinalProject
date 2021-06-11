@@ -96,6 +96,9 @@ void keyPressed() {
     key = 'z';
   }
   if (screen > 0) {
+    if (key == '`') {
+      timer = 0;
+    }
     if (key == 'r') {
       println(activePlayer) ;
       boolean changed = false ;
@@ -129,6 +132,11 @@ void keyPressed() {
       if (gameOver) {
         screen = 0;  
         gameOver = false;
+        tiles.clear();
+        items.clear();
+        containers.clear();
+        pTiles.clear();
+        orders.clear();
       }
     }
     if (key == 'w') {
