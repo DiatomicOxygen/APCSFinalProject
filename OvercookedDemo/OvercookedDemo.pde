@@ -74,7 +74,7 @@ void draw() {
     background(130) ; 
     int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
     inGameDisplay(timeElapsed);
-    if ((timer <= timeElapsed) && (timer+3 >= timeElapsed)) {
+    if ((timer <= timeElapsed) && (timer+4 >= timeElapsed)) {
       activePlayer = 0 ;
       P1.active = false ;
       P2.active = false ;
@@ -82,7 +82,7 @@ void draw() {
       image(loadImage("timesup.png"),540, 360) ;
       imageMode(CORNER) ;  
     }
-    if (timer+3 < timeElapsed) {
+    if (timer+4 < timeElapsed) {
       gameOverDisplay();
       gameOver = true ;
     }
@@ -343,6 +343,7 @@ void inGameDisplay(int timeElapsed) {
 }
 
 void gameOverDisplay() {
+    image(loadImage("tablescreen.jpg"),0,0) ;
     String endText = "Better luck next time!";
     stroke(0);
     color c1 = 230;
