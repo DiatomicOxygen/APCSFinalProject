@@ -94,11 +94,13 @@ public class Container extends Item {
     for (Ingredient a : ingredients) {
       if (i.name.equals(a.name)) return false ;
     }
-    if (!(i.isCut)) return false ;
+    if (!(i.isCut) && i.isCuttable) return false ;
     if (i.isCookable) return false ;
     i.setXY(x,y);
     i.radius = width / 50;
     if (i.name.equals("cut_cabbage")) ingredients.add(0,i);
+    else if (i.name.equals("cooked_cut_meat")) ingredients.add(0,i);
+    else if (i.name.equals("cut_tomato") && ingredients.size() > 0) ingredients.add(1,i);
     else ingredients.add(i);
     i.visible = false ;
     return true;
