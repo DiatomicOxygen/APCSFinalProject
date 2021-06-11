@@ -138,4 +138,10 @@ Jesse:
 - Edited order tab visuals
 - Added coin/score icon
 
+6/11/21
+Jesse: 
+- Added a visual when time is up
+- Made changes to how score screen pops up
+- Began working on new and improved score screen
+
 
