@@ -134,8 +134,13 @@ Jesse:
 - Added fancy logo for menu/start screen
 
 6/9/21
-Jesse: 
+Jesse:
 - Edited order tab visuals
 - Added coin/score icon
 
-
+Edward:
+- changed crate to properly make ingredients that can be cooked
+- meat assets added
+- naming convention changed for items in containers (for convenience)
+- cooked foods can be transferred directly from pan to plate
+- fixed a bug where raw meat could be cooked before cut
