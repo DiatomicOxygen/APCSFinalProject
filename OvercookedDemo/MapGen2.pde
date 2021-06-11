@@ -1,4 +1,5 @@
 void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Container> containers, ArrayList<Order> orders, boolean hardMode) {
+  timer = 300 ;
   hours = hour() ;
   minutes = minute() ;
   seconds = second() ;

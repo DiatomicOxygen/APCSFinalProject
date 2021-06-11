@@ -8,7 +8,7 @@ float HEIGHT = 720;
 int hours = 0 ;
 int minutes = 0 ;
 int seconds = 0 ;
-int timer = 300 ;
+int timer = 0 ;
 int[] score = new int[1]; 
 Player P1 ;
 Player P2 ;
@@ -73,11 +73,18 @@ void draw() {
   if (screen > 0) {
     background(130) ; 
     int timeElapsed = (hour() - hours) * 3600 + (minute() - minutes) * 60 + (second() - seconds) ;
-    if (timer - timeElapsed < 0) timeElapsed = timer ;
     inGameDisplay(timeElapsed);
-    if (timer == timeElapsed) {
-      gameOverDisplay();  
-      gameOver = true;
+    if ((timer <= timeElapsed) && (timer+3 >= timeElapsed)) {
+      activePlayer = 0 ;
+      P1.active = false ;
+      P2.active = false ;
+      imageMode(CENTER) ;
+      image(loadImage("timesup.png"),540, 360) ;
+      imageMode(CORNER) ;  
+    }
+    if (timer+3 < timeElapsed) {
+      gameOverDisplay();
+      gameOver = true ;
     }
   }
 } 
@@ -90,7 +97,6 @@ void keyPressed() {
   }
   if (screen == 0 && key == ' ') {
     screen += selected + 1; 
-    timer = 300;
     if (screen == 1) {
       mapOne(tiles, pTiles, containers, orders, hardMode);  
     } else {
@@ -303,11 +309,14 @@ void inGameDisplay(int timeElapsed) {
   fill(0);
   textSize(40);
   if (timer - timeElapsed <= 10) fill(color(#F54343)) ;
-  if ((timer - timeElapsed)%60 > 10) {
-    text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
-  } else {
-    if ((timer - timeElapsed)%60 == 10) text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
-    else text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
+  if (timer - timeElapsed <= 0)  text("0:00",950,65) ;  
+  else {
+    if ((timer - timeElapsed)%60 > 10) {
+      text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
+    } else {
+      if ((timer - timeElapsed)%60 == 10) text((timer - timeElapsed)/60 + ":" + (timer - timeElapsed)%60,950,65) ;  
+      else text((timer - timeElapsed)/60 + ":0" + (timer - timeElapsed)%60,950,65) ;  
+    }
   }
   textSize(50);
   fill(255);
@@ -326,7 +335,7 @@ void inGameDisplay(int timeElapsed) {
   fill(255);
   textSize(20);
   text("FPS: "+frameRate,10,700) ;
-  move() ; 
+  if (activePlayer != 0) move() ; 
 }
 
 void gameOverDisplay() {

@@ -1,4 +1,5 @@
 void mapOne(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Container> containers, ArrayList<Order> orders, boolean hardMode) {
+  timer = 20 ;
   hours = hour() ;
   minutes = minute() ;
   seconds = second() ;
