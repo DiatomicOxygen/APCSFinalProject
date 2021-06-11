@@ -16,7 +16,7 @@ Controls:
 - WASD for movement
 - space for a small speed boost
 - E to pick up or drop an item
-- Q to interact with special tiles (crates, cutting board, and sink)
+- Q to interact with special tiles (crates, cutting board, and sink) or a fire extinguisher
 - R to switch which chef you control
 - grave key to end current level
 - mouse controls on level select screen
@@ -166,3 +166,24 @@ Edward:
 - naming convention changed for items in containers (for convenience)
 - cooked foods can be transferred directly from pan to plate
 - fixed a bug where raw meat could be cooked before cut
+
+6/10/21
+Edward:
+- added fire extinguisher to put out fires
+- added textures (fire, burnt food, buns, fire extinguisher)
+- level select screen added
+- implemented levels
+  - added level 2 (map and orders)
+- added a way to end the game early (grave key)
+- adjusted difficulty and added hard mode
+  - hard mode makes orders faster and harder
+  - hard mode adds dirty dishes and washing plates
+  - hard mode moves location of garbage can in level 2 to be more punishing
+- added credits on main menu
+- updated many textures and some of their names
+- fixed a bug where you could cook an item twice
+- fixed a bug where you could only cook once with a stove
+- fixed a bug where the plate dispenser looked full after it was empty
+- fixed a bug where player could take items from a burning stove
+- fixed a bug where levels would overlap
+  - also sorry I procrastinated a little, I had 2 APs, a math test, and 2 other projects!
