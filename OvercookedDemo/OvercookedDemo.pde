@@ -150,6 +150,7 @@ void keyPressed() {
         pTiles.clear();
         orders.clear();
         orderAdded = false;
+        score[0] = 0;
       }
     }
     if (key == 'w') {
@@ -276,7 +277,7 @@ void inGameDisplay(int timeElapsed) {
     int speed = 30;
     if (hardMode) speed -= 4;
     if (!(orderAdded) && ((timeElapsed % speed) == 0) && (timeElapsed <= timer - 25)) {
-      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
+      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+40,score) ;
       Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
       Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
       Ingredient patty = new Ingredient(0,0,color(255,0,0), "cooked_cut_meat",false, false) ;
