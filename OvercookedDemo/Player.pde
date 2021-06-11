@@ -135,25 +135,29 @@ public class Player {
     return false;
   }
   
-  void interact(ArrayList<ProcessingTile> pTiles, ArrayList<Item> items) {
+  boolean interact(ArrayList<ProcessingTile> pTiles, ArrayList<Item> items) {
    if (busy < 0) {
-     for (ProcessingTile pT : pTiles) {
-       float xInFront = x + cos(direction)*55 ;
-       float yInFront = y + sin(direction)*55 ;
-       if ((pT.x1 < xInFront) && (pT.x2 > xInFront) && (pT.y1 < yInFront) && (pT.y2 > yInFront)) {
-          pT.process(items,this); 
-       }
-     }
+     float xInFront = x + cos(direction)*55 ;
+     float yInFront = y + sin(direction)*55 ;
      if (inHand != null && inHand.name.equals("fire_extinguisher")) {
-       float xInFront = x + cos(direction)*45 ;
-       float yInFront = y + sin(direction)*45 ;
        for(Tile t : tiles) {
-         if ((t.x1 < xInFront) && (t.x2 > xInFront) && (t.y1 < yInFront) && (t.y2 > yInFront)) {
+         if (t.onFire && dist(xInFront, yInFront, (t.x2 + t.x1)/2, (t.y2 + t.y1)/2) <= radius*5) {
             t.onFire = false; 
+            imageMode(CENTER) ;
+            image(loadImage("spray.png"),xInFront,yInFront);
+            imageMode(CORNER) ;
+            return true;
          }
        }
      }
+     for (ProcessingTile pT : pTiles) {
+       if ((pT.x1 < xInFront) && (pT.x2 > xInFront) && (pT.y1 < yInFront) && (pT.y2 > yInFront)) {
+          pT.process(items,this); 
+          return true;
+       }
+     }
    }
+   return true;
   }
   
 }

@@ -2,7 +2,6 @@ public class Stove extends ProcessingTile {
  
   Container pan;
   int cooking;
-  boolean onFire = false;
   
   Stove(float x1, float y1, float x2, float y2) {
     super(160,x1,y1,x2,y2) ;
