@@ -49,6 +49,9 @@ public class Player {
     }
     colorMode(RGB,255,255,255) ;
     busy--;
+    if (inHand != null && dist(inHand.x, inHand.y, x, y) > 65) {
+      inHand = null;  
+    }
   }
   
   void move (float dx, float dy, float d, ArrayList<Tile> tiles, Player p) {
@@ -102,9 +105,10 @@ public class Player {
             if ((t.x1 < xInFront) && (t.x2 > xInFront) && (t.y1 < yInFront) && (t.y2 > yInFront)) {
               if (! t.putOn(inHand)) {
                 return false;
+              } else {
+                inHand = null;
+                return true;
               }
-              inHand = null;
-              return true;
             }
          }
          inHand.setXY(inHand.x, inHand.y);
@@ -115,11 +119,8 @@ public class Player {
         for (Tile t : tiles) {
             if ((t.x1 < xInFront) && (t.x2 > xInFront) && (t.y1 < yInFront) && (t.y2 > yInFront)) {
               inHand = t.retrieve();
-              if (inHand != null) {
-                return true;
-              } else {
-                return false; 
-              }
+              return false;
+              //doesn't matter if it returns true or not 
             }
          }
          for (Item i : items) {

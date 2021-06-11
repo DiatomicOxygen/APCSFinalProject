@@ -21,6 +21,9 @@ public class Tile {
     stroke(0) ;
     fill(c) ;
     rect(x1,y1,x2-x1,y2-y1) ;
+    if (i != null) {
+      i.setXY((x2-x1)/2+x1,(y2-y1)/2+y1) ;
+    }
   }
   
   boolean putOn(Item a) {
