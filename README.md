@@ -9,7 +9,29 @@ Brief Project Description:
 We plan on making a 2D, simplified version of the high paced cooking game, Overcooked. In this game, we want to make it so that the player is able to control a chef that can perform various tasks and prepare dishes to be submitted for points. After a set amount of time, the player is rated on the amount of dishes prepared and the efficiency in which they did so.
 
 How to play:
-Run the code in processing and the game will start. There is a timer at the top right of the screen, and when that is over, the game is over. There is a score counter to the left of the timer, which displays your score. On the left corner, there is a list of orders that you can submit for more points. The time remaining on the order influences the amount of points gained when the dish is submitted. You are controlling the chef, which is the blue circle with a white hat. Use the W, A, S, and D keys to move in their respective directions. Use the E key to pick up any items that are on the floor or on tiles or drop items. Use the Q key to interact with tiles that change ingredients or dispense ingredients (excluding the plate dispenser). To submit, just drop your plate onto the counter (white rectangular tile with arrows). Note that only plates can be submitted. Have fun!
+Run the code in processing and the game will start. Press space to leave the main menu. In the level select screen, press on your desired settings with the mouse and press space when satisfied. There is a timer at the top right of the screen, and when that is over, the level is over. There is a score counter to the left of the timer, which displays your score. On the left corner, there is a list of orders that you can submit for more points. The time remaining on the order influences the amount of points gained when the dish is submitted. You are controlling the chef, which is the blue circle with a white hat. Use the W, A, S, and D keys to move in their respective directions. Use the E key to pick up any items that are on the floor or on tiles or drop items. Use the Q key to interact with tiles that change ingredients or dispense ingredients (excluding the plate dispenser). Use the R key to switch to the other chef. To submit, just drop your plate onto the counter (white rectangular tile with arrows). Note that only plates can be submitted. Have fun!
+
+Summary of How to Play:
+Controls:
+- WASD for movement
+- space for a small speed boost
+- E to pick up or drop an item
+- Q to interact with special tiles (crates, cutting board, and sink)
+- R to switch which chef you control
+- grave key to end current level
+- mouse controls on level select screen
+
+Level settings:
+- click on level 1 or 2 with your mouse on the level select screen
+  - level 2 is a bit harder
+- click on hard mode button with your mouse to toggle hard mode
+- press space to begin level
+
+Food Guide:
+- cabbages must be cut before put on a plate
+- tomatoes must be cut before put on a plate
+- meat must be cut and then cooked before put on a plate
+- buns can be put on the plate straight out of the crate!
 
 Development Log:
 5/24/21
