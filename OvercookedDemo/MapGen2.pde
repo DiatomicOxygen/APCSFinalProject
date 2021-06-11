@@ -22,6 +22,11 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
   Ingredient meat = new Ingredient(0,0,color(255,0,0), "meat",true,false) ;
   Ingredient fireExt = new Ingredient(0,0,color(255,0,0), "fire_extinguisher",false,false) ;
   items.add(fireExt);
+  
+  int cap = 5;
+  if (!hardMode) {
+    cap += 100;  
+  }
   //tile generation
  
   for(int i=1; i<=13; i++) {
@@ -54,7 +59,7 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
       tiles.add(new Tile(tan,x1,605,x2,670)) ;
     }
     if (i == 10) { 
-      Tile dishes = new DishDispenser(x1,605,x2,670, containers, items);
+      Tile dishes = new DishDispenser(x1,605,x2,670, containers, items, cap);
       tiles.add(dishes); 
     }
     if (i == 4 && hardMode) {
@@ -88,14 +93,15 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
     if (i != 4 && i != 5 && i != 2) { 
       tiles.add(new Tile(tan,897.5,y1,962.5,y2));
     }
-    if (i == 4) {
-      Counter counter = new Counter(897.5,y1,962.5,y2 + 65, containers, items, orders);
-      tiles.add(counter);
-    }
     if (i == 2) {
       ProcessingTile crate = new Crate(meat,color(#746B49),897.5,y1,962.5,y2);
       pTiles.add(crate);
       tiles.add(crate);
+    }
+    if (i == 4) {
+      Counter counter = new Counter(897.5,y1,962.5,y2 + 65, containers, items, orders);
+      tiles.add(counter);
+      counter.easyMode = !hardMode;
     }
   }
 }
