@@ -253,7 +253,9 @@ void inGameDisplay(int timeElapsed) {
  fill(#B2CED6) ;
  rect(0,0,1080,100) ;
  if (selected == 0) {
-   if (!(orderAdded) && ((timeElapsed % 23) == 0) && (timeElapsed <= timer - 25)) {
+   int speed = 23;
+   if (hardMode) speed -= 4;
+   if (!(orderAdded) && ((timeElapsed % speed) == 0) && (timeElapsed <= timer - 25)) {
       Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
       Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
       Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
@@ -266,9 +268,11 @@ void inGameDisplay(int timeElapsed) {
       orders.add(newOrder) ;
       orderAdded = true ;
     }
-    if ((timeElapsed % 23) == 3) orderAdded = false ;
+    if ((timeElapsed % speed) == 3) orderAdded = false ;
   } else {
-    if (!(orderAdded) && ((timeElapsed % 30) == 0) && (timeElapsed <= timer - 25)) {
+    int speed = 30;
+    if (hardMode) speed -= 4;
+    if (!(orderAdded) && ((timeElapsed % speed) == 0) && (timeElapsed <= timer - 25)) {
       Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
       Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
       Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
@@ -292,7 +296,7 @@ void inGameDisplay(int timeElapsed) {
       orders.add(newOrder) ;
       orderAdded = true ;
     }
-    if ((timeElapsed % 30) == 3) orderAdded = false ;
+    if ((timeElapsed % speed) == 3) orderAdded = false ;
   }
   
   float x = 0 ;
