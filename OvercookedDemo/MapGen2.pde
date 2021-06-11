@@ -21,6 +21,7 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
   Ingredient cabbage = new Ingredient(0,0,color(#59E84F), "cabbage",true,false) ;
   Ingredient tomato = new Ingredient(0,0,color(255,0,0), "tomato",true,false) ;
   Ingredient meat = new Ingredient(0,0,color(255,0,0), "meat",true,false) ;
+  Ingredient bun = new Ingredient(0,0,color(255,0,0), "bun",false,false) ;
   Ingredient fireExt = new Ingredient(0,0,color(255,0,0), "fire_extinguisher",false,false) ;
   items.add(fireExt);
   
@@ -55,12 +56,16 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
     if (i < 7 && i != 1) {
       tiles.add(new Tile(tan,x1,410,x2,475)) ;
     }
-    if (i != 10 && (!hardMode ||(i != 4 && i !=5))) {
+    if (i != 9 && (!hardMode ||(i != 4 && i !=5)) && (hardMode || i != 11)) {
       tiles.add(new Tile(tan,x1,605,x2,670)) ;
     }
-    if (i == 10) { 
+    if (i == 9) { 
       Tile dishes = new DishDispenser(x1,605,x2,670, containers, items, cap);
       tiles.add(dishes); 
+    }
+    if (!hardMode && i == 11) {
+      Tile garbage = new Garbage(x1,605,x2,670, containers, items);
+      tiles.add(garbage);
     }
     if (i == 4 && hardMode) {
       ProcessingTile sink = new Sink(x1,605,x2+65,670);
@@ -72,7 +77,7 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
     color tan = color(#D3BC91) ;
     float y1 = 215+(65*(i-1));
     float y2 = 215+(65*i);
-    if (i != 1 && i != 3 && i != 6) {
+    if (i != 1 && i != 3 && (!hardMode || i != 6)) {
       tiles.add(new Tile(tan,117.5,y1,182.5,y2)) ;
     }
     if (i == 1 || i == 3) {
@@ -83,7 +88,7 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
       items.add(pan);
       stove.putOn(pan);
     }
-    if (i == 6) { 
+    if (hardMode && i == 6) { 
       Tile garbage = new Garbage(117.5,y1,182.5,y2, containers, items);
       tiles.add(garbage);
     }
@@ -93,12 +98,17 @@ void mapTwo(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
       pTiles.add(crate);
       tiles.add(crate);
     }
-    if (i != 4 && i != 5) { 
+    if (i != 4 && i != 5 && i != 2) { 
       Tile t = new Tile(tan,897.5,y1,962.5,y2);
       tiles.add(t);
       if (i == 1) {
         t.putOn(fireExt);  
       }
+    }
+    if (i == 2) {
+      ProcessingTile crate = new Crate(bun,color(#746B49),897.5,y1,962.5,y2);
+      pTiles.add(crate);
+      tiles.add(crate);
     }
     if (i == 4) {
       Counter counter = new Counter(897.5,y1,962.5,y2 + 65, containers, items, orders);

@@ -36,6 +36,9 @@ void draw() {
     textSize(50) ;
     if (((second() % 5) == 0) || ((second() % 5) == 1)) fill(255) ;
     text("PRESS SPACE TO START",270,500) ;
+    textSize(25) ;
+    fill(0);
+    text("By: Edward Oo and Jessie Xie, Pd 4",25,700) ;
   }
   if (screen == 0) {
     background(#54649D) ;   
@@ -143,6 +146,7 @@ void keyPressed() {
         containers.clear();
         pTiles.clear();
         orders.clear();
+        orderAdded = false;
       }
     }
     if (key == 'w') {
@@ -248,20 +252,53 @@ void move() {
 void inGameDisplay(int timeElapsed) { 
  fill(#B2CED6) ;
  rect(0,0,1080,100) ;
- if (!(orderAdded) && ((timeElapsed % 21) == 0) && (timeElapsed <= timer - 25)) {
-    Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
-    Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
-    Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
-    cabbage.isCut = true ;
-    tomato.isCut = true ;
-    newOrder.container.putOn(cabbage) ;
-    if(Math.random() > .5) {
-       newOrder.container.putOn(tomato) ;
+ if (selected == 0) {
+   int speed = 23;
+   if (hardMode) speed -= 4;
+   if (!(orderAdded) && ((timeElapsed % speed) == 0) && (timeElapsed <= timer - 25)) {
+      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
+      Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
+      Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
+      cabbage.isCut = true ;
+      tomato.isCut = true ;
+      newOrder.container.putOn(cabbage) ;
+      if(Math.random() > .5) {
+         newOrder.container.putOn(tomato) ;
+      }
+      orders.add(newOrder) ;
+      orderAdded = true ;
     }
-    orders.add(newOrder) ;
-    orderAdded = true ;
+    if ((timeElapsed % speed) == 3) orderAdded = false ;
+  } else {
+    int speed = 30;
+    if (hardMode) speed -= 4;
+    if (!(orderAdded) && ((timeElapsed % speed) == 0) && (timeElapsed <= timer - 25)) {
+      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
+      Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
+      Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
+      Ingredient patty = new Ingredient(0,0,color(255,0,0), "cooked_cut_meat",false, false) ;
+      Ingredient bun = new Ingredient(0,0,color(255,0,0), "bun",false, false) ;
+      cabbage.isCut = true ;
+      tomato.isCut = true ;
+      newOrder.container.putOn(patty);
+      newOrder.container.putOn(bun);
+      if(!hardMode) {
+        if (Math.random() > .5) {
+          newOrder.container.putOn(cabbage) ;
+        }
+      } else {
+        if (Math.random() > .5) {
+          newOrder.container.putOn(cabbage) ;
+        } else {
+          newOrder.container.putOn(tomato) ;
+        }
+      }
+      orders.add(newOrder) ;
+      orderAdded = true ;
+    }
+    if ((timeElapsed % speed) == 3) orderAdded = false ;
   }
-  if ((timeElapsed % 21) == 3) orderAdded = false ;
+  
   float x = 0 ;
   Order removed = new Order(1,1,1,1,2,score) ;
   for(Order o : orders) {
