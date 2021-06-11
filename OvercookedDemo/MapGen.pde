@@ -1,5 +1,5 @@
 void mapOne(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<Container> containers, ArrayList<Order> orders, boolean hardMode) {
-  timer = 20 ;
+  timer = 300 ;
   hours = hour() ;
   minutes = minute() ;
   seconds = second() ;
@@ -20,7 +20,6 @@ void mapOne(ArrayList<Tile> tiles, ArrayList<ProcessingTile> pTiles, ArrayList<C
   tiles.add(d) ;
   Ingredient cabbage = new Ingredient(0,0,color(#59E84F), "cabbage",true,false) ;
   Ingredient tomato = new Ingredient(0,0,color(255,0,0), "tomato",true,false) ;
-  Ingredient meat = new Ingredient(0,0,color(255,0,0), "meat",true,false) ;
   
   int cap = 5;
   if (!hardMode) {

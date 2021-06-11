@@ -8,7 +8,7 @@ float HEIGHT = 720;
 int hours = 0 ;
 int minutes = 0 ;
 int seconds = 0 ;
-int timer = 0 ;
+int timer = 300 ;
 int[] score = new int[1]; 
 Player P1 ;
 Player P2 ;
@@ -45,6 +45,8 @@ void draw() {
     textSize(50) ;
     fill(0);
     text("SELECT A LEVEL",370,200) ;
+    if (((second() % 5) == 0) || ((second() % 5) == 1)) fill(255) ;
+    text("PRESS SPACE TO CONFIRM",225,550) ;
     stroke(0);
     if (selected == 0) {
       fill(#ADD8E6);   
@@ -97,6 +99,7 @@ void keyPressed() {
   }
   if (screen == 0 && key == ' ') {
     screen += selected + 1; 
+    timer = 300;
     if (screen == 1) {
       mapOne(tiles, pTiles, containers, orders, hardMode);  
     } else {
