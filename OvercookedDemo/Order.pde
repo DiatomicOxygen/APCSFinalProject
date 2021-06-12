@@ -3,14 +3,12 @@ public class Order {
   int curTime ;
   int endTime ;
   Container container;
-  int[] score;
   
-  Order(float x, float y, int strTime, int curTime, int endTime, int[] score) {
+  Order(float x, float y, int strTime, int curTime, int endTime) {
     container = new Container(x,y,255,"plate");
     this.strTime = strTime ;
     this.curTime = curTime ;
     this.endTime = endTime ;
-    this.score = score;
   }
   
   void display(float x, float y) {
@@ -30,7 +28,8 @@ public class Order {
 }
 
   void reward() {
-    score[0] += (container.ingredients.size() + 1) * (endTime - curTime)/3;  
+    score += 20 ;
+    if ((curTime - (endTime - strTime)/2) >= 1) tips += (curTime - (endTime - strTime)/2) ;  
     endTime = 0;
     curTime = 0;
   }

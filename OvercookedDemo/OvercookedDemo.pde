@@ -9,7 +9,9 @@ int hours = 0 ;
 int minutes = 0 ;
 int seconds = 0 ;
 int timer = 300 ;
-int[] score = new int[1]; 
+int score = 0 ;
+int tips = 0 ;
+int failed = 0 ;
 Player P1 ;
 Player P2 ;
 boolean orderAdded = false ;
@@ -150,7 +152,9 @@ void keyPressed() {
         pTiles.clear();
         orders.clear();
         orderAdded = false;
-        score[0] = 0;
+        score = 0;
+        tips = 0 ;
+        failed = 0 ;
       }
     }
     if (key == 'w') {
@@ -260,7 +264,7 @@ void inGameDisplay(int timeElapsed) {
    int speed = 23;
    if (hardMode) speed -= 4;
    if (!(orderAdded) && ((timeElapsed % speed) == 0) && (timeElapsed <= timer - 25)) {
-      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35,score) ;
+      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+35) ;
       Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
       Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
       cabbage.isCut = true ;
@@ -277,7 +281,7 @@ void inGameDisplay(int timeElapsed) {
     int speed = 30;
     if (hardMode) speed -= 4;
     if (!(orderAdded) && ((timeElapsed % speed) == 0) && (timeElapsed <= timer - 25)) {
-      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+45,score) ;
+      Order newOrder = new Order(0,0,timeElapsed,timeElapsed,timeElapsed+45) ;
       Ingredient cabbage = new Ingredient(0,0,color(#2BD668), "cut_cabbage",true, false) ;
       Ingredient tomato = new Ingredient(0,0,color(255,0,0), "cut_tomato",true, false) ;
       Ingredient patty = new Ingredient(0,0,color(255,0,0), "cooked_cut_meat",false, false) ;
@@ -304,12 +308,13 @@ void inGameDisplay(int timeElapsed) {
   }
   
   float x = 0 ;
-  Order removed = new Order(1,1,1,1,2,score) ;
+  Order removed = new Order(1,1,1,1,2) ;
   for(Order o : orders) {
     o.curTime = timeElapsed ; 
     o.display(20 * (x+1) + x*108, 10) ;
     if (o.curTime >= o.endTime) {
       removed = o ;
+      failed += 10 ;
     }
     x++ ;
   }
@@ -330,7 +335,7 @@ void inGameDisplay(int timeElapsed) {
   fill(255);
   image(loadImage("coin.png"),770,0) ;   
   textAlign(CENTER) ;
-  text(score[0],822,67) ;
+  text(score+tips-failed,822,67) ;
   textAlign(LEFT) ;
   for(Tile t : tiles) {
     t.display() ;
@@ -348,32 +353,28 @@ void inGameDisplay(int timeElapsed) {
 
 void gameOverDisplay() {
     image(loadImage("tablescreen.jpg"),0,0) ;
-    String endText = "Better luck next time!";
-    stroke(0);
-    color c1 = 230;
-    color c2 = 230;
-    color c3 = 230;
-    if (score[0] >= 70) {
-      c1 = color(#FFFF00);
-      endText = "An apprentice's skill!";
-    }
-    if (score[0] >= 140) {
-      c2 = color(#FFFF00);
-      endText = "Not bad for a beginner!";
-    }
-    if (score[0] >= 200) {
-      c3 = color(#FFFF00);
-      endText = "Culinary genius!";
-    }
-    fill(80, 100);
-    rect(1080/2 - 300, 720/2 - 125 ,600, 325);
-    fill(c1);
-    ellipse(1080/2 - 150, 720/2 + 100, 100, 100);
-    fill(c2);
-    ellipse(1080/2 , 720/2 + 100, 100, 100);
-    fill(c3);
-    ellipse(1080/2 + 150, 720/2 + 100, 100, 100);
     fill(0);
-    textSize(40);
-    text(endText, 1080/3, 720/2 - 50);  
+    textSize(20) ;
+    textAlign(CENTER) ;
+    text("Level" + screen,540,230) ;
+    textAlign(LEFT) ;
+    text("Orders Delivered",370,280) ;
+    text("Tips",370,310) ;
+    text("Orders Failed",370,340) ;
+    PImage onestar = loadImage("blackstar.png") ;
+    PImage twostar = loadImage("blackstar.png");
+    PImage threestar = loadImage("blackstar.png");
+    if (score+tips-failed >= 70) {
+      onestar = loadImage("yellowstar.png");
+    }
+    if (score+tips-failed >= 140) {
+      twostar = loadImage("yellowstar.png");
+    }
+    if (score+tips-failed >= 200) {
+      threestar = loadImage("yellowstar.png");
+    }
+    imageMode(CENTER) ;
+    image(onestar, 430, 472) ;
+    image(twostar, 540, 472) ;
+    image(threestar, 650, 472) ;
 }
