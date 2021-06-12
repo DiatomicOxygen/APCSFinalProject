@@ -314,7 +314,7 @@ void inGameDisplay(int timeElapsed) {
     o.display(20 * (x+1) + x*108, 10) ;
     if (o.curTime >= o.endTime) {
       removed = o ;
-      failed += 10 ;
+      if (! removed.complete) failed += 10 ;
     }
     x++ ;
   }
@@ -335,7 +335,8 @@ void inGameDisplay(int timeElapsed) {
   fill(255);
   image(loadImage("coin.png"),770,0) ;   
   textAlign(CENTER) ;
-  text(score+tips-failed,822,67) ;
+  if (score+tips-failed > 0) text(score+tips-failed,822,67) ;
+  else text("0",822,67) ;
   textAlign(LEFT) ;
   for(Tile t : tiles) {
     t.display() ;
@@ -357,10 +358,24 @@ void gameOverDisplay() {
     textSize(20) ;
     textAlign(CENTER) ;
     text("Level" + screen,540,230) ;
+    textSize(25) ;
+    text("PRESS SPACE TO CONTINUE",540,630) ;
+    textSize(20) ;
     textAlign(LEFT) ;
     text("Orders Delivered",370,280) ;
     text("Tips",370,310) ;
     text("Orders Failed",370,340) ;
+    text("TOTAL",370,397) ;
+    textAlign(RIGHT) ;
+    text(score / 20+" x "+20,710,280) ;
+    text(tips,710,310) ;
+    fill(#FA0000) ;
+    text(failed / 10+" x "+10,710,340) ;
+    fill(0) ;
+    textSize(40) ;
+    if (score+tips-failed > 0) text(score+tips-failed,710,405) ;
+    else text("0",710,405) ;
+    textAlign(LEFT) ;
     PImage onestar = loadImage("blackstar.png") ;
     PImage twostar = loadImage("blackstar.png");
     PImage threestar = loadImage("blackstar.png");

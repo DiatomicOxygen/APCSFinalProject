@@ -3,6 +3,7 @@ public class Order {
   int curTime ;
   int endTime ;
   Container container;
+  boolean complete = false ;
   
   Order(float x, float y, int strTime, int curTime, int endTime) {
     container = new Container(x,y,255,"plate");
@@ -28,8 +29,9 @@ public class Order {
 }
 
   void reward() {
+    complete = true ;
     score += 20 ;
-    if ((curTime - (endTime - strTime)/2) >= 1) tips += (curTime - (endTime - strTime)/2) ;  
+    if ((((endTime - strTime)/2) - (curTime - strTime))/2 >= 1) tips += (((endTime - strTime)/2) - (curTime - strTime))/2 ;  
     endTime = 0;
     curTime = 0;
   }
