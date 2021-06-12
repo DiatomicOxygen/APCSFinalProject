@@ -203,3 +203,10 @@ Edward:
 - fixed a bug where score is not cleared after a game
 - fixed a bug where player could take items from far away
 - decreased difficulty on map 2
+
+6/12/21 
+Jesse:
+Didnt realize project was due yesterday
+- Revamped score system
+- Added tips and fails
+- Finished score screen
